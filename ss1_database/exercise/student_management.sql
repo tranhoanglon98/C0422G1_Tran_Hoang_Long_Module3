@@ -2,11 +2,11 @@ create database student_management;
 
 use student_management;
 
-create table student(
-id_student int,
-`name` varchar(55),
-age int,
-country varchar(55)
+CREATE TABLE student (
+    id_student INT,
+    `name` VARCHAR(55),
+    age INT,
+    country VARCHAR(55)
 );
 
 alter table student 
