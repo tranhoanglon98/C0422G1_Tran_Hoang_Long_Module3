@@ -1,6 +1,6 @@
 create database furama_resort;
 CREATE TABLE vi_tri (
-    ma_vi_tri INT PRIMARY KEY UNIQUE,
+    ma_vi_tri INT PRIMARY KEY,
     ten_vi_tri VARCHAR(45) NOT NULL
 );
 
@@ -31,7 +31,7 @@ CREATE TABLE kieu_thue (
 
 CREATE TABLE dich_vu_di_kem (
     ma_dich_vu_di_kem INT PRIMARY KEY,
-    ten_dich_vu_di_kem VARCHAR(45) NOT NULL UNIQUE,
+    ten_dich_vu_di_kem VARCHAR(45) NOT NULL,
     gia DOUBLE NOT NULL,
     don_vi VARCHAR(10) NOT NULL,
     trang_thai VARCHAR(45)
@@ -59,14 +59,14 @@ CREATE TABLE nhan_vien (
 
 CREATE TABLE khach_hang (
     ma_khach_hang INT PRIMARY KEY,
-    ma_loai_khach INT NOT NULL UNIQUE,
+    ma_loai_khach INT NOT NULL,
     ho_ten VARCHAR(45) NOT NULL,
     ngay_sinh DATE NOT NULL,
     gioi_tinh BIT(1) NOT NULL,
     so_cmnd VARCHAR(45) NOT NULL UNIQUE,
     so_dien_thoai VARCHAR(45) NOT NULL UNIQUE,
     email VARCHAR(45) UNIQUE,
-    dia_chi VARCHAR(45) UNIQUE,
+    dia_chi VARCHAR(45),
     FOREIGN KEY (ma_loai_khach)
         REFERENCES loai_khach (ma_loai_khach)
 );
