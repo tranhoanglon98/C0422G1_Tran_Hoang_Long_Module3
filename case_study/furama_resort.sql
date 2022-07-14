@@ -1,4 +1,9 @@
+drop database if exists furama_resort;
+
 create database furama_resort;
+
+use  furama_resort;
+
 CREATE TABLE vi_tri (
     ma_vi_tri INT PRIMARY KEY,
     ten_vi_tri VARCHAR(45) NOT NULL
