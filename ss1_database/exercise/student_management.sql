@@ -1,8 +1,8 @@
-drop database if exists student_management;
+DROP DATABASE IF EXISTS student_management;
 
-create database student_management;
+CREATE DATABASE student_management;
 
-use student_management;
+USE student_management;
 
 CREATE TABLE student (
     id_student INT,
@@ -11,25 +11,25 @@ CREATE TABLE student (
     country VARCHAR(55)
 );
 
-alter table student 
-add primary key (id_student);
+ALTER TABLE student 
+ADD PRIMARY KEY (id_student);
 
-alter table student 
-change column id_student id_student int AUTO_INCREMENT;
+ALTER TABLE student 
+CHANGE COLUMN id_student id_student INT AUTO_INCREMENT;
 
-insert into student (`name`,age,country) 
-value ("long",32,"Việt Nam"),("Phú",23,"lào");
+INSERT INTO student (`name`,age,country) 
+VALUE ("long",32,"Việt Nam"),("Phú",23,"LÀo");
 
-select*from student;
+SeleCT*FROM STUdent;
 
-create table class(
+creaTE TABlE CLAss(
 id int,
-`name` varchar(55)
+`NAme` varcHAR(55)
 );
 
-create table teacher(
+CreaTE TABlE TEAcher(
 id int,
-`name` varchar(55),
-age int,
-country varchar(55)
+`NAme` varcHAR(55),
+AGE int,
+COUntry varcHAR(55)
 );

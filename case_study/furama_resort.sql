@@ -1,8 +1,8 @@
-drop database if exists furama_resort;
+DROP DATABASE IF EXISTS furama_resort;
 
-create database furama_resort;
+CREATE DATABASE furama_resort;
 
-use  furama_resort;
+USE  furama_resort;
 
 CREATE TABLE vi_tri (
     ma_vi_tri INT PRIMARY KEY,
