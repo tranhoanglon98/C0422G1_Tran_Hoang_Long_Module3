@@ -16,7 +16,7 @@ CREATE TABLE trinh_do (
 
 CREATE TABLE bo_phan (
     ma_bo_phan INT PRIMARY KEY,
-    ten_trinh_do VARCHAR(45) NOT NULL
+    ten_bo_phan VARCHAR(45) NOT NULL
 );
 
 CREATE TABLE loai_khach (
@@ -51,9 +51,9 @@ CREATE TABLE nhan_vien (
     so_dien_thoai VARCHAR(45) NOT NULL UNIQUE,
     email VARCHAR(45) UNIQUE,
     dia_chi VARCHAR(45),
-    ma_vi_tri INT NOT NULL UNIQUE,
-    ma_trinh_do INT NOT NULL UNIQUE,
-    ma_bo_phan INT NOT NULL UNIQUE,
+    ma_vi_tri INT NOT NULL,
+    ma_trinh_do INT NOT NULL,
+    ma_bo_phan INT NOT NULL,
     FOREIGN KEY (ma_vi_tri)
         REFERENCES vi_tri (ma_vi_tri),
     FOREIGN KEY (ma_trinh_do)
@@ -64,14 +64,14 @@ CREATE TABLE nhan_vien (
 
 CREATE TABLE khach_hang (
     ma_khach_hang INT PRIMARY KEY,
-    ma_loai_khach INT NOT NULL,
     ho_ten VARCHAR(45) NOT NULL,
     ngay_sinh DATE NOT NULL,
     gioi_tinh BIT(1) NOT NULL,
-    so_cmnd VARCHAR(45) NOT NULL UNIQUE,
-    so_dien_thoai VARCHAR(45) NOT NULL UNIQUE,
+    so_cmnd VARCHAR(45) NOT NULL,
+    so_dien_thoai VARCHAR(45) NOT NULL unique,
     email VARCHAR(45) UNIQUE,
     dia_chi VARCHAR(45),
+	ma_loai_khach INT NOT NULL,
     FOREIGN KEY (ma_loai_khach)
         REFERENCES loai_khach (ma_loai_khach)
 );
@@ -82,13 +82,13 @@ CREATE TABLE dich_vu (
     dien_tich INT,
     chi_phi_thue DOUBLE NOT NULL,
     so_nguoi_toi_da INT,
-    ma_kieu_thue INT NOT NULL,
-    ma_loai_dich_vu INT NOT NULL,
     tieu_chuan_phong VARCHAR(45),
     mo_ta_tien_nghi_khac VARCHAR(45),
     dien_tich_ho_boi DOUBLE,
     so_tang INT,
     dich_vu_mien_phi_di_kem TEXT,
+	ma_kieu_thue INT NOT NULL,
+    ma_loai_dich_vu INT NOT NULL,
     FOREIGN KEY (ma_kieu_thue)
         REFERENCES kieu_thue (ma_kieu_thue),
     FOREIGN KEY (ma_loai_dich_vu)
@@ -113,15 +113,11 @@ CREATE TABLE hop_dong (
 
 CREATE TABLE hop_dong_chi_tiet (
     ma_hop_dong_chi_tiet INT PRIMARY KEY,
-    ma_hop_dong INT NOT NULL UNIQUE,
+	so_luong INT NOT NULL,
+    ma_hop_dong INT NOT NULL,
     ma_dich_vu_di_kem INT NOT NULL,
-    so_luong INT NOT NULL,
     FOREIGN KEY (ma_hop_dong)
         REFERENCES hop_dong (ma_hop_dong),
     FOREIGN KEY (ma_dich_vu_di_kem)
         REFERENCES dich_vu_di_kem (ma_dich_vu_di_kem)
 );
-
-
-
-
