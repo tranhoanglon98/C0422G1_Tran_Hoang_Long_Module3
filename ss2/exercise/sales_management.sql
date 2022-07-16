@@ -1,36 +1,39 @@
-drop database if exists sales_management;
+DROP DATABASE IF EXISTS sales_management;
 
-create database sales_management;
+CREATE DATABASE sales_management;
 
-use sales_management;
+USE sales_management;
 
-create table customer(
-	customer_id int auto_increment primary key,
-    customer_name varchar(55) not null,
-    customer_age tinyint not null
+CREATE TABLE customer (
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(55) NOT NULL,
+    customer_age TINYINT NOT NULL
 );
 
-create table product(
-	product_id int auto_increment primary key,
-    product_name varchar(55) not null,
-    price double not null default 0 check(price >=0)
+CREATE TABLE product (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(55) NOT NULL,
+    price DOUBLE NOT NULL DEFAULT 0 CHECK (price >= 0)
 );
 
-create table orders(
-	order_id int auto_increment primary key,
-    customer_id int not null,
-    order_date datetime not null,
-    total_price double not null default 0 check(total_price >=0),
-    foreign key (customer_id) references customer(customer_id)
+CREATE TABLE orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    order_date DATETIME NOT NULL,
+    total_price DOUBLE DEFAULT 0 CHECK (total_price >= 0),
+    FOREIGN KEY (customer_id)
+        REFERENCES customer (customer_id)
 );
 
-create table order_detail(
-	order_id int,
-    product_id int,
-    order_quantity int not null default 0 check (order_quantity >=0),
-    primary key (order_id,product_id),
-    foreign key (order_id) references orders(order_id),
-    foreign key (product_id) references product(product_id)
+CREATE TABLE order_detail (
+    order_id INT,
+    product_id INT,
+    order_quantity INT NOT NULL DEFAULT 0 CHECK (order_quantity >= 0),
+    PRIMARY KEY (order_id , product_id),
+    FOREIGN KEY (order_id)
+        REFERENCES orders (order_id),
+    FOREIGN KEY (product_id)
+        REFERENCES product (product_id)
 );
 
 
