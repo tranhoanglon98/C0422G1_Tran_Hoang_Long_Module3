@@ -124,8 +124,9 @@ FROM
     bo_phan bp ON bp.ma_bo_phan = nv.ma_bo_phan
         JOIN
     hop_dong hd ON hd.ma_nhan_vien = nv.ma_nhan_vien
-GROUP BY nv.ma_nhan_vien
-HAVING COUNT(hd.ma_nhan_vien) <= 3;
+
+where (year(hd.ngay_lam_hop_dong) = 2020 or year(hd.ngay_lam_hop_dong) = 2021) 
+group by hd.ma_nhan_vien having count(hd.ma_nhan_vien) <=3;
 
 
 
