@@ -72,7 +72,7 @@ GROUP BY ho_ten;
 
 -- Cách 2:
 SELECT DISTINCT
-    ho_ten
+    ho_ten 
 FROM
     khach_hang;
     
@@ -91,14 +91,14 @@ FROM
 -- task9:
 -- Thực hiện thống kê doanh thu theo tháng của năm 2021.
 SELECT 
-    MONTH(hd.ngay_lam_hop_dong) AS `#thang`,
+    MONTH(hd.ngay_lam_hop_dong) AS `thang`,
     COUNT(MONTH(hd.ngay_lam_hop_dong)) AS so_luong_khach_hang
 FROM
     hop_dong hd
 WHERE
     YEAR(hd.ngay_lam_hop_dong) = '2021'
-GROUP BY `#thang`
-ORDER BY `#thang`;
+GROUP BY `thang`
+ORDER BY `thang`;
 
 -- task10:
 -- Hiển thị thông tin tương ứng với từng hợp đồng thì đã sử dụng bao nhiêu dịch vụ đi kèm.
@@ -114,16 +114,3 @@ FROM
         LEFT JOIN
     hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
 GROUP BY hd.ma_hop_dong;
-
-
-
-
-
-
-
-
-
-
-
-
-
