@@ -50,7 +50,10 @@ explain select product_name, product_price
 -- Tạo view lấy về các thông tin: productCode, productName, productPrice, productStatus từ bảng products. 
 create view v_products as
     select 
-        product_code, product_name, product_price, product_status
+        product_code, 
+        product_name, 
+        product_price, 
+        product_status
     from
         products; 
 
@@ -58,12 +61,14 @@ set sql_safe_updates =0;
 
 
 -- Tiến hành sửa đổi view 
-update v_products 
-set 
-    product_name = 'product1111111'
-where
-    product_code = 5;
-set sql_safe_updates =1;
+create or replace view v_products as
+	select 
+		product_code, 
+		product_name, 
+        product_price, 
+        product_status, 
+        product_amount
+    from products;
 
 
 -- Tiến hành xoá view 
@@ -111,7 +116,7 @@ call update_product(3,87,"product345",545456,43,null,1);
 
 
 -- Tạo store procedure xoá sản phẩm theo id 
-delimiter $$+
+delimiter $$
 create procedure delete_product (in id int)
 begin
 	delete from products where product_id = id;
