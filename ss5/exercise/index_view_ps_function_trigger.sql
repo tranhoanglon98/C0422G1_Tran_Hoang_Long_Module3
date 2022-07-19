@@ -30,13 +30,11 @@ insert into products
  
 -- Tạo Unique Index trên bảng Products (sử dụng cột productCode để tạo chỉ mục) 
 create unique index i_product_code on products (product_code);
-
 drop index i_product_code on products;
 
 
 -- Tạo Composite Index trên bảng Products (sử dụng 2 cột productName và productPrice) 
 create  index i_product_name_price on products (product_name, product_price);
-
 drop index i_product_name_price on products;
 
 
@@ -45,9 +43,9 @@ explain select product_code from products where product_code >3;
 explain select product_name, product_price 
 		from 
 			products 
-		where product_name = "product1" 
+		where product_price = 111 and  product_name = "product1" 
 		group by product_name;
-
+ 
 
 -- Tạo view lấy về các thông tin: productCode, productName, productPrice, productStatus từ bảng products. 
 create view v_products as
