@@ -54,7 +54,7 @@ SELECT
     dv.ten_dich_vu,
     hd.ngay_lam_hop_dong,
     hd.ngay_ket_thuc,
-    (dv.chi_phi_thue + IFNULL(hdct.so_luong * dvdk.gia, 0)) AS tong_tien
+    (dv.chi_phi_thue + sum(IFNULL(hdct.so_luong * dvdk.gia, 0))) AS tong_tien
 FROM
     khach_hang kh
         LEFT JOIN

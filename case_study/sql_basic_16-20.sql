@@ -16,6 +16,7 @@ SET sql_safe_updates = 1;
 
 -- 17.	Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond,
 -- chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ. 
+SET sql_safe_updates =0;
 UPDATE khach_hang 
 SET 
     ma_loai_khach = 1
@@ -24,7 +25,8 @@ WHERE
             temp.ma_khach_hang
         FROM
             (SELECT 
-                hd.ma_khach_hang
+                hd.ma_khach_hang,
+                    (dv.chi_phi_thue + SUM(IFNULL(hdct.so_luong * dvdk.gia, 0))) AS tong_tien
             FROM
                 khach_hang kh
             LEFT JOIN hop_dong hd ON kh.ma_khach_hang = hd.ma_khach_hang
@@ -32,11 +34,9 @@ WHERE
             LEFT JOIN dich_vu_di_kem dvdk ON dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
             LEFT JOIN dich_vu dv ON dv.ma_dich_vu = hd.ma_dich_vu
             LEFT JOIN loai_khach lk ON lk.ma_loai_khach = kh.ma_loai_khach
-            WHERE
-                lk.ma_loai_khach = 2
-            GROUP BY kh.ma_khach_hang
-            HAVING SUM(dv.chi_phi_thue + IFNULL(hdct.so_luong * dvdk.gia, 0)) > 1000000) temp);
-
+            GROUP BY hd.ma_hop_dong , kh.ma_khach_hang
+            HAVING tong_tien > 10000000) temp);
+SET sql_safe_updates =1;
 
 
 -- 18.	Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
