@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <title>Đọc Truyện</title>
     <style>
+        body {
+            background: linear-gradient(to right, #434343, #000000);
+
+        }
+
+
         img {
             height: 370px;
             width: 250px;
+            box-shadow: #001510 10px 8px;
         }
 
-        .contents {
+        .category {
             display: inline-block;
             margin: 30px 30px;
             text-align: center;
@@ -18,15 +25,45 @@
         #posters {
             margin-left: 15%;
         }
-        
+
+        .list{
+            display: none;
+        }
+
+        .category:hover .list{
+            display: inline;
+        }
+
+        #contents {
+            margin-left: 40px;
+        }
+
+        h4{
+            color: orangered;
+        }
+        h5{
+            color: orange;
+        }
+
+        #contents p{
+            background: -webkit-linear-gradient(45deg, #FFE000, #799F0C 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         a {
             text-decoration: none;
+        }
+
+        p {
+            text-align: justify;
+            text-indent: 20px;
         }
     </style>
 </head>
 <body>
 <div id="posters">
-    <div class="contents">
+    <div class="category">
         <a href="#kim_dung"><img src="https://image.ibb.co/bwGuSw/gamehub_ahxd_1.jpg" alt="Tiểu thuyết Kim Dung"></a>
         <br>
         <a href="#kim_dung"><h4 class="category">Tiểu thuyết Kim Dung</h4></a>
@@ -37,7 +74,7 @@
         </div>
     </div>
 
-    <div class="contents">
+    <div class="category">
         <a href="#foreign"><img
                 src="https://cdn.shopify.com/s/files/1/0575/8287/8927/products/harry-potter-va-ten-tu-nha-nguc-azkaba-tap-3-tai-ban_1400x.jpg?v=1634356373"
                 alt="Văn học nước ngoài"></a>
@@ -50,7 +87,7 @@
         </div>
     </div>
 
-    <div class="contents">
+    <div class="category">
         <a href="#viet_nam"><img src="https://image.lag.vn/upload/news/20/03/25/D_SODO-poster-final2303_EHAH.jpg"
                                  alt="Văn học Việt Nam"></a>
         <br>
@@ -61,6 +98,8 @@
             <a href="#viet_nam3"><h4>Tắt đèn</h4></a>
         </div>
     </div>
+</div>
+<div id="contents">
     <div>
         <h4 id="kim_dung">Tiểu thuyết Kim Dung</h4>
         <h5 id="kim_dung1">Xạ điêu anh hùng truyện</h5>
@@ -226,7 +265,7 @@
             cô giáo trường làng, và vô cùng yêu quý Ngạn. Trong khi ai cũng nghĩ rằng Trà Long sẽ là sự nối tiếp những
             gì mà Hà Lan đã bỏ dở trong đời Ngạn, thì Ngạn quyết định ra đi vì anh nhận ra rằng Trà Long chỉ là cái bóng
             của Hà Lan trong anh mà thôi.</p><br>
-        <h5 id="viet_nam3">tắt đèn</h5>
+        <h5 id="viet_nam3">Tắt đèn</h5>
         <p>Tắt đèn là một trong những tác phẩm văn học tiêu biểu nhất của nhà văn Ngô Tất Tố (tiểu thuyết, in trên báo
             Việt nữ năm 1937).[1] Đây là một tác phẩm văn học hiện thực phê phán với nội dung nói về cuộc sống khốn khổ
             của tầng lớp nông dân Việt Nam đầu thế kỉ XX dưới ách đô hộ của thực dân Pháp.</p>
@@ -272,7 +311,8 @@
             như cái tiền đồ của chị vậy!"</p>
 
     </div>
-    <br>
 </div>
+<br>
+
 </body>
 </html>
