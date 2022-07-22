@@ -34,8 +34,8 @@ WHERE
             LEFT JOIN dich_vu_di_kem dvdk ON dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
             LEFT JOIN dich_vu dv ON dv.ma_dich_vu = hd.ma_dich_vu
             LEFT JOIN loai_khach lk ON lk.ma_loai_khach = kh.ma_loai_khach
-            GROUP BY hd.ma_hop_dong , kh.ma_khach_hang
-            HAVING tong_tien > 10000000) temp);
+            GROUP BY  kh.ma_khach_hang
+            HAVING tong_tien > 1000000) temp);
 SET sql_safe_updates =1;
 
 
@@ -98,5 +98,5 @@ UNION SELECT
 FROM
     khach_hang;
 
-
+ 
 

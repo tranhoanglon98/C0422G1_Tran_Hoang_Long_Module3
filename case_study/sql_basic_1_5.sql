@@ -54,7 +54,7 @@ SELECT
     dv.ten_dich_vu,
     hd.ngay_lam_hop_dong,
     hd.ngay_ket_thuc,
-    (dv.chi_phi_thue + sum(IFNULL(hdct.so_luong * dvdk.gia, 0))) AS tong_tien
+    (dv.chi_phi_thue + SUM(IFNULL(hdct.so_luong * dvdk.gia, 0))) AS tong_tien
 FROM
     khach_hang kh
         LEFT JOIN
@@ -67,5 +67,5 @@ FROM
     dich_vu dv ON dv.ma_dich_vu = hd.ma_dich_vu
         LEFT JOIN
     loai_khach lk ON lk.ma_loai_khach = kh.ma_loai_khach
-GROUP BY hd.ma_hop_dong,kh.ma_khach_hang
+GROUP BY hd.ma_hop_dong , kh.ma_khach_hang
 ORDER BY kh.ma_khach_hang;
