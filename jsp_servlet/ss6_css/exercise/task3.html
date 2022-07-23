@@ -5,72 +5,123 @@
     <title>Đọc Truyện</title>
     <style>
         body {
-            background: linear-gradient(to right, #434343, #000000);
+            background: linear-gradient(to right,#000000, #333131);
 
         }
 
+        #main {
+            position: relative;
+            margin-left: 15%;
+            width: 70%;
+        }
 
         img {
             height: 370px;
             width: 250px;
-            box-shadow: #001510 10px 8px;
+            box-shadow: black 10px 8px;
         }
 
         .category {
             display: inline-block;
-            margin: 30px 30px;
             text-align: center;
+            position: relative;
+            margin: 25px 25px;
+            height: 700px;
         }
 
-        #posters {
-            margin-left: 15%;
-        }
-
-        .list{
+        .list {
             display: none;
+            position: absolute;
+            width: 100%;
+            z-index: 1;
         }
 
-        .category:hover .list{
-            display: inline;
+        .category:hover .list {
+            display: block;
         }
 
         #contents {
-            margin-left: 40px;
+            margin-left: 15%;
+            width: 70%;
         }
 
-        h4{
-            color: orangered;
-        }
-        h5{
-            color: orange;
+        button {
+            background: linear-gradient(to right,#B3BF00, #799F0C);
+            width: 100%;
+            height: 40px;
+            margin-top: 20px;
+            border: none;
+            box-shadow: black 10px 8px;
+            border-radius: 5px;
+            font-family: Allison, serif;
+            font-weight: bold;
+            font-size: 30px;
+            color: #ad2427;
         }
 
-        #contents p{
+        button:hover {
+            background: #ad2427;
+            color: lightblue;
+        }
+
+        .bt_category {
+            font-size: 32px;
+
+        }
+
+        #contents p {
             background: -webkit-linear-gradient(45deg, #FFE000, #799F0C 80%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-align: justify;
+            text-indent: 25px;
+        }
+
+        #contents h4 {
+            color: #a9de09;
+            font-size: 30px;
+            text-decoration-line: underline;
+        }
+
+        #contents h5 {
+            color: #93ba1c;
+            font-size: 20px;
         }
 
         a {
             text-decoration: none;
         }
 
-        p {
-            text-align: justify;
-            text-indent: 20px;
+        #to_top{
+            width: 50px;
+            height: 50px;
+            float: right;
+            position: fixed;
+            top: 80%;
+            right: 5%;
         }
+
     </style>
+    <link href='https://fonts.googleapis.com/css?family=Allison' rel='stylesheet'>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
 </head>
 <body>
-<div id="posters">
+<div id="main">
     <div class="category">
         <a href="#kim_dung"><img src="https://image.ibb.co/bwGuSw/gamehub_ahxd_1.jpg" alt="Tiểu thuyết Kim Dung"></a>
         <br>
-        <a href="#kim_dung"><h4 class="category">Tiểu thuyết Kim Dung</h4></a>
+        <button class="bt_category">Tiểu thuyết Kim Dung</button>
         <div class="list">
-            <a href="#kim_dung1"><h4>Xạ điêu anh hùng truyện</h4></a>
-            <a href="#kim_dung2"><h4>Tiếu ngạo giang hồ</h4></a>
-            <a href="#kim_dung3"><h4>Ỷ thiên đồ long ký</h4></a>
+            <a href="#kim_dung1">
+                <button>Xạ điêu anh hùng truyện</button>
+            </a>
+            <a href="#kim_dung2">
+                <button>Tiếu ngạo giang hồ</button>
+            </a>
+            <a href="#kim_dung3">
+                <button>Ỷ thiên đồ long ký</button>
+            </a>
         </div>
     </div>
 
@@ -79,11 +130,17 @@
                 src="https://cdn.shopify.com/s/files/1/0575/8287/8927/products/harry-potter-va-ten-tu-nha-nguc-azkaba-tap-3-tai-ban_1400x.jpg?v=1634356373"
                 alt="Văn học nước ngoài"></a>
         <br>
-        <a href="#foreign"><h4 class="category">Văn học nước ngoài</h4></a>
+        <button class="bt_category">Văn học nước ngoài</button>
         <div class="list">
-            <a href="#foreign1"><h4>Harry Potter</h4></a>
-            <a href="#foreign2"><h4>Hai số phận</h4></a>
-            <a href="#foreign3"><h4>Bố già</h4></a>
+            <a href="#foreign1">
+                <button>Harry Potter</button>
+            </a>
+            <a href="#foreign2">
+                <button>Hai số phận</button>
+            </a>
+            <a href="#foreign3">
+                <button>Bố già</button>
+            </a>
         </div>
     </div>
 
@@ -91,11 +148,17 @@
         <a href="#viet_nam"><img src="https://image.lag.vn/upload/news/20/03/25/D_SODO-poster-final2303_EHAH.jpg"
                                  alt="Văn học Việt Nam"></a>
         <br>
-        <a href="#viet_nam"><h4 class="category">Văn học Việt Nam</h4></a>
+        <button class="bt_category">Văn học Việt Nam</button>
         <div class="list">
-            <a href="#viet_nam1"><h4>Số đỏ</h4></a>
-            <a href="#viet_nam2"><h4>Mắt biếc</h4></a>
-            <a href="#viet_nam3"><h4>Tắt đèn</h4></a>
+            <a href="#viet_nam1">
+                <button>Số đỏ</button>
+            </a>
+            <a href="#viet_nam2">
+                <button>Mắt biếc</button>
+            </a>
+            <a href="#viet_nam3">
+                <button>Tắt đèn</button>
+            </a>
         </div>
     </div>
 </div>
@@ -114,6 +177,7 @@
         <p>Phần hai của câu chuyện tập trung vào những gian nan đau khổ mà cả hai phải trải qua. Quách Tĩnh, con của
             Quách Khiếu Thiên lớn lên ở Mông Cổ, dưới sự bảo vệ của Thành Cát Tư Hãn. Dương Khang mặt khác lớn lên là
             hoàng thân của nhà Kim.</p><br>
+        <hr>
         <h5 id="kim_dung2">Tiếu ngạo giang hồ</h5>
         <p>Tiếu ngạo giang hồ (tiếng Trung: 笑傲江湖; bính âm: xiào ào jiāng hú, tiếng Anh: The Smiling, Proud Wanderer,
             hoặc State of Divinity) là một tiểu thuyết kiếm hiệp của Kim Dung, lần đầu tiên được phát hành trên Minh báo
@@ -132,6 +196,7 @@
             hồ như Tả Lãnh Thiền trưởng môn phái Tung Sơn, minh chủ khối Ngũ Nhạc, Nhạc Bất Quần trưởng môn phái Hoa
             Sơn, Dư Thương Hải trưởng môn phái Thanh Thành hay Mộc Cao Phong, Lao Đức Nặc,... Chính từ đây đã nảy sinh
             bao âm mưu, bất hòa, tranh chấp hòng giành giật pho bí kíp này, xưng bá võ lâm.</p><br>
+        <hr>
         <h5 id="kim_dung3">Ỷ thiên đồ long ký</h5>
         <p>Các diễn biến được phát triển dựa trên một bí kíp kiếm pháp truyền thuyết và sự liên hệ giữa các nhân vật với
             bí kíp đó. Theo lời đồn đại trên giang hồ, trong gia đình nhà họ Lâm có một pho kiếm phổ chép tay tên gọi
@@ -155,6 +220,7 @@
             Chính vì vậy vào cuối truyện, anh đã bị Chu Nguyên Chương lừa nên từ chức và bỏ đi cùng Triệu Mẫn, khiến
             quyền lực của quân khởi nghĩa chống Nguyên dần rơi vào tay Chu Nguyên Chương, làm bước đệm cho Chu Nguyên
             Chương giành lấy thiên hạ.</p><br>
+        <hr>
     </div>
     <br>
     <div>
@@ -177,6 +243,7 @@
             trong lịch sử và được dịch sang 67 ngôn ngữ. Phần bảy, và cũng là phần cuối cùng, Harry Potter and the
             Deathly Hallows (Harry Potter và Bảo bối Tử thần) xuất bản vào ngày 21 tháng 7 năm 2007. Hơn 11 triệu quyển
             đã được bán trong 24 giờ đầu tiên[4].</p><br>
+        <hr>
         <h5 id="foreign2">Hai số phận</h5>
         <p>Hai số phận (có tên gốc tiếng Anh là: Kane and Abel) là một cuốn tiểu thuyết được sáng tác vào năm 1979 bởi
             nhà văn người Anh Jeffrey Archer. Tựa đề Kane and Abel dựa theo câu chuyện của anh em: Cain và Abel trong
@@ -194,6 +261,7 @@
             mình . “Hai số phận” nói về nỗi khát khao cháy bỏng, những nghĩa cử, những mối thâm thù, từng bước đường
             phiêu lưu, hiện thực thế giới và những góc khuất... mê hoặc người đọc bằng ngôn từ cô đọng, hai mạch truyện
             song song được xây dựng tinh tế từ những chi tiết nhỏ nhất.)</p><br>
+        <hr>
         <h5 id="foreign3">Bố già</h5>
         <p>Bố già (tiếng Anh: The Godfather) là tên một cuốn tiểu thuyết nổi tiếng của nhà văn người Mỹ gốc Ý Mario Puzo
             được xuất bản lần đầu vào năm 1969 bởi nhà xuất bản G. P. Putnam's Sons. Tác phẩm là câu chuyện về một gia
@@ -210,6 +278,7 @@
             nặn từ vốn sống của hàng chục năm lăn lộn giữa chốn giang hồ bao phen vào sinh ra tử.</p>
         <p>Với kết cấu hoàn hảo, cốt truyện không thiếu những pha hành động gay cấn, tình tiết bất ngờ và không khí kình
             địch đến nghẹt thở, Bố già xứng đáng là đỉnh cao trong sự nghiệp văn chương của Mario Puzo.</p><br>
+        <hr>
     </div>
     <br>
     <div>
@@ -238,6 +307,7 @@
             thua. Kết thúc trận đấu, khi bị đám đông phản đối, Xuân hùng hồn diễn thuyết cho đám đông dân chúng hiểu
             hành động "hy sinh vì tổ quốc của mình", được mời vào hội Khai trí tiến đức, được nhận huân chương Bắc Đẩu
             bội tinh và cuối cùng trở thành con rể cụ cố Hồng.</p><br>
+        <hr>
         <h5 id="viet_nam2">Mắt biếc</h5>
         <p>Mắt biếc là tiểu thuyết của nhà văn Nguyễn Nhật Ánh trong loạt truyện viết về tình yêu thanh thiếu niên của
             tác giả này cùng với Thằng quỷ nhỏ, Cô gái đến từ hôm qua,... Đây được xem là một trong những tác phẩm tiêu
@@ -265,6 +335,7 @@
             cô giáo trường làng, và vô cùng yêu quý Ngạn. Trong khi ai cũng nghĩ rằng Trà Long sẽ là sự nối tiếp những
             gì mà Hà Lan đã bỏ dở trong đời Ngạn, thì Ngạn quyết định ra đi vì anh nhận ra rằng Trà Long chỉ là cái bóng
             của Hà Lan trong anh mà thôi.</p><br>
+        <hr>
         <h5 id="viet_nam3">Tắt đèn</h5>
         <p>Tắt đèn là một trong những tác phẩm văn học tiêu biểu nhất của nhà văn Ngô Tất Tố (tiểu thuyết, in trên báo
             Việt nữ năm 1937).[1] Đây là một tác phẩm văn học hiện thực phê phán với nội dung nói về cuộc sống khốn khổ
@@ -311,6 +382,9 @@
             như cái tiền đồ của chị vậy!"</p>
 
     </div>
+</div>
+<div id="to_top">
+   <a href="#main"><button><span class="material-symbols-outlined">expand_less</span></button></a>
 </div>
 <br>
 
