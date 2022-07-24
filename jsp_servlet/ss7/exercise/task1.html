@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo layout với các thẻ html</title>
+    <style>
+        body {
+            margin: 0;
+            background: #A9A9A9;
+        }
+
+        header {
+            background: black;
+            color: white;
+            position: fixed;
+            height: 80px;
+            top: 0;
+            right: 0;
+            left: 0;
+        }
+
+        header h1 {
+            margin: 20px 0 0 20px;
+        }
+
+        nav {
+            background: #B22222;
+            position: fixed;
+            height: 30px;
+            top: 80px;
+            right: 0;
+            left: 0;
+        }
+
+        nav ul {
+            margin-top: 5px;
+            padding-left: 10px;
+        }
+
+        nav ul li {
+            list-style: none;
+            display: inline;
+            height: 20px;
+            margin-left: 10px;
+        }
+
+        nav li:hover {
+            color: yellow;
+            cursor: pointer;
+        }
+
+        section {
+            width: 80%;
+            height: 800px;
+            background: #A9A9A9;
+            float: left;
+            margin-top: 110px;
+        }
+
+        section h3 {
+            margin: 20px;
+        }
+
+        aside {
+            width: 20%;
+            height: auto;
+            background: #A9A9A9;
+            position: fixed;
+            top: 110px;
+            right: 0;
+            float: right;
+        }
+
+        aside h3 {
+            margin-left: 10px;
+        }
+
+        aside a {
+            text-align: initial;
+            margin: 10px;
+            display: block;
+            color: black;
+        }
+
+        aside a:hover {
+            color: darkblue;
+            cursor: pointer;
+        }
+
+        footer {
+            background: black;
+            color: white;
+            clear: both;
+            padding: 10px;
+        }
+
+        article {
+            margin: 10px;
+            padding: 10px;
+            background: lightgray;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Monday Times</h1>
+</header>
+<nav>
+    <ul>
+        <li>News</li>
+        <li>Sports</li>
+        <li>Weather</li>
+    </ul>
+</nav>
+<section>
+    <h3>News section</h3>
+    <article>
+        <h3>Điểm trung bình thi tốt nghiệp THPT của TP. HCM: Môn nào thấp, môn nào cao nhất?</h3>
+        <p>Sau khi công bố điểm thi tốt nghiệp THPT, Sở GD-ĐT TP.HCM đã có thống kê về điểm trung bình các môn thi trong
+            kỳ
+            thi năm 2022.</p>
+        <p>Theo đó, môn thi tốt nghiệp THPT có mức điểm trung bình cao nhất là môn giáo dục công dân với 8,17 điểm. Môn
+            có
+            mức điểm trung bình thấp nhất trong 9 môn thi là sinh học với 4,97 điểm.</p>
+        <p>Ở 3 môn thi bắt buộc thì môn toán có mức điểm trung bình là 7,01; môn ngữ văn là 6,34; môn tiếng Anh là 6,4
+            điểm.</p>
+        <p>Ở bài thi khoa học tự nhiên, môn hóa có mức điểm trung bình cao nhất là 6,56 ; môn vật lý là 6,44 và môn sinh
+            học là 4,97.</p>
+        <p>Về bài thi khoa học xã hội, môn địa lý có mức điểm trung bình là 6,7; môn lịch sử là 6,4 và giáo dục công dân
+            là 8,17 điểm.</p>
+        <p>Cũng trong kỳ thi tốt nghiệp THPT năm nay, TP.HCM có hơn 200 thí sinh đạt điểm tối đa các môn thi. Trong đó
+            giáo dục công dân có nhiều thí sinh đạt điểm 10 nhất với 86 thí sinh, sau đó đến môn tiếng Anh với 72 thí
+            sinh, môn lịch sử 25 thí sinh...</p>
+    </article>
+    <article>
+        <h3>5 ngư dân mất tích trở về và phút giây vợ ôm chồng trào nước mắt</h3>
+        <p>5 ngư dân gặp nạn trên biển gồm thuyền trưởng Bùi Văn Toàn (50 tuổi), cùng 4 thuyền viên được tàu Hải quân
+            466 đưa về cảng ở Khánh Hòa sáng nay (24/7). Đây là 5 người trên tàu cá Bình Thuận bị chìm hôm 10/7, được
+            tàu chở hàng nước ngoài cứu vào trưa 22/7. </p>
+        <p>Thoát nạn sau 12 ngày bám thuyền thúng lênh đênh trên biển giành giật sự sống, vẻ mặt các thuyền viên chưa
+            hết mệt mỏi. Nhất là trên hành trình ấy, họ phải chứng kiến bạn thuyền chết vì kiệt sức, phần khác đối mặt
+            khó khăn do toàn bộ ngư cụ, thiết bị, tài sản chìm theo con tàu.
+
+            Vẻ mặt tiều tụy, đôi mắt trũng sâu, thuyền trưởng Bùi Văn Toàn cho hay, tàu ông có 15 người đánh bắt hải
+            sản, trên đường trở về thì gặp giông gió. Từng đợt sóng biển vỗ mạnh, dâng cao khiến nước tràn vào. Các
+            thuyền viên cố tát nước, tìm đủ cách khắc phục, song mọi nỗ lực đều bất thành. Tàu chìm nhanh, thức ăn, nước
+            uống đều chìm dưới biển theo tàu.</p>
+        <p>Là thuyền trưởng, ông Toàn phải đưa ra quyết định khó khăn nhất của cuộc đời, đó là chia mọi người thành hai
+            nhóm, lên hai thuyền thúng. Một bên 7 thành viên, còn ông lên chiếc thúng có 8 người.</p>
+
+        <p> Những ngày trôi dạt, nhóm của thuyền trưởng phó mặc cho sóng gió đẩy đưa. Trong tình cảnh đói, khát họ đành
+            uống nước biển để bớt khô họng, vớt rong để ăn và hứng nước mưa chắt chiu, chia nhau từng ngụm.</p>
+    </article>
+</section>
+
+<aside>
+    <h3>Today's Good News</h3>
+    <hr>
+    <a href="#">28 'đại biểu' đặc biệt trong chương trình Màu hoa đỏ tại Nghĩa trang Trường Sơn</a><br>
+    <a href="#">Thời tiết mát mẻ, phố Tây ở Hà Nội chật cứng khách trong đêm</a><br>
+    <a href="#">Thời tiết mát mẻ, phố Tây ở Hà Nội chật cứng khách trong đêm</a><br>
+    <a href="#">Thủ tướng dâng hương, hoa tại nghĩa trang liệt sĩ quốc tế Việt – Lào</a>
+</aside>
+<footer>
+    <h3>Trần Hoàng Long - C0422G1</h3>
+</footer>
+</body>
+</html>

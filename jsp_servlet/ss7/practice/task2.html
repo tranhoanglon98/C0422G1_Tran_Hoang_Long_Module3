@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task2</title>
+    <style>
+        li {
+            list-style-type: none;
+        }
+
+        #main, #main li, #main ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        #main li {
+            position: relative;
+        }
+
+        #main ul ul {
+            position: absolute;
+            visibility: hidden;
+            left: 150px;
+            top: 0;
+            z-index: 1;
+        }
+
+        button{
+            height: 25px;
+            margin-top: 5px;
+            box-shadow: #333131 2px 2px;
+            font-family: Arial,serif;
+            background: linear-gradient(to right, #ffe000, #799f0c);
+            border: none;
+            border-radius: 5px;
+            color: #434343;
+        }
+
+        button:hover{
+            background: linear-gradient(to right, #000000, #434343);
+            color: #ffe000;
+        }
+
+        .category button{
+            width: 150px;
+            text-align: left;
+        }
+
+        .content button{
+            width: 250px;
+            margin-left: 5px;
+            top: 0;
+        }
+
+        #main ul{
+            display: none;
+        }
+
+        #main:hover ul{
+            display: block;
+        }
+
+        #main ul li:hover ul{
+            visibility: visible;
+        }
+
+    </style>
+</head>
+<body>
+<div id="main">
+    <button>Văn Học</button>
+    <ul>
+        <li class="category">
+            <button>Tiểu thuyết Kim Dung</button>
+            <ul class="content">
+                <li>
+                    <button>Tiếu ngạo giang hồ</button>
+                </li>
+                <li>
+                    <button>Ỷ thiên đồ long ký</button>
+                </li>
+                <li>
+                    <button>Lộc đỉnh ký</button>
+                </li>
+                <li>
+                    <button>Xạ điêu anh hùng truyện</button>
+                </li>
+                <li>
+                    <button>Thiên long bát bộ</button>
+                </li>
+            </ul>
+        </li>
+
+        <li class="category">
+            <button>Văn học Viêt Nam</button>
+            <uL class="content">
+                <li>
+                    <button>Mắt biếc</button>
+                </li>
+                <li>
+                    <button>Số đỏ</button>
+                </li>
+                <li>
+                    <button>Tắt đèn</button>
+                </li>
+                <li>
+                    <button>Đất rừng phương nam</button>
+                </li>
+                <li>
+                    <button>Tôi thấy hoa vàng trên cỏ xanh</button>
+                </li>
+            </uL>
+        </li>
+
+        <li class="category">
+            <button>Văn học nước ngoài</button>
+            <ul class="content">
+                <li>
+                    <button>Hai số phận</button>
+                </li>
+                <li>
+                    <button>Bố già</button>
+                </li>
+                <li>
+                    <button>Tiếng chim hót trong bụi mận gai</button>
+                </li>
+                <li>
+                    <button>Ba chàng lính ngự lâm</button>
+                </li>
+                <li>
+                    <button>Don Quijote, đại kị sĩ tài hoa xứ Mancha</button>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
