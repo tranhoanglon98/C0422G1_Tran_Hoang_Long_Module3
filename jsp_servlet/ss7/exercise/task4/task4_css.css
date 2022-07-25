@@ -6,6 +6,7 @@ body{
 
 header img{
     width: 150px;
+    margin: 5px 0 5px 10px;
 
 }
 
@@ -13,6 +14,18 @@ header,nav,footer{
     background: gray;
     box-shadow: #333131 5px 5px;
     margin: 10px 0;
+}
+
+header{
+    position: fixed;
+    margin-top: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+nav{
+    margin-top: 87px;
 }
 
 nav a{
@@ -45,9 +58,18 @@ nav a:hover{
     box-shadow: #333131 5px 5px;
 }
 
+#left-content h4{
+    padding: 10px 0 20px 0;
+}
+
+#left-content hr{
+    width: 80%;
+}
+
 #right-content p{
     text-align: justify;
     text-indent: 10px;
+    padding: 10px;
 }
 
 .row{
