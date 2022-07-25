@@ -95,8 +95,13 @@ nav a:hover{
         font-size: 35px;
     }
 
-    h2{
+    h4{
         font-size: 40px;
+    }
+
+    #left-content iframe{
+        width: 60%;
+        margin: 10px 20%;
     }
 
 }
@@ -114,6 +119,15 @@ nav a:hover{
     .col-m-10 {width: 83.333333%;}
     .col-m-11 {width: 91.666666%;}
     .col-m-12 {width: 100%;}
+
+    #left-content iframe{
+        width: 100%;
+        margin: 0;
+    }
+
+    #left-content{
+       margin: 0;
+    }
 }
 
 @media only screen and (min-width:1241px){
