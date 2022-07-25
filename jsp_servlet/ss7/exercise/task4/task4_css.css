@@ -15,6 +15,20 @@ header,nav,footer{
     margin: 10px 0;
 }
 
+nav a{
+    text-decoration: none;
+    color: white;
+}
+
+nav a:hover{
+    color: #3B5998;
+    font-weight: bold;
+}
+
+.border{
+    border-right: white 1px solid;
+}
+
 #page{
     margin: 20px;
 }
@@ -31,8 +45,10 @@ header,nav,footer{
     box-shadow: #333131 5px 5px;
 }
 
-
-
+#right-content p{
+    text-align: justify;
+    text-indent: 10px;
+}
 
 .row{
     display: flex;
