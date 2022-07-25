@@ -1,14 +1,13 @@
 body{
     margin: 0;
     background: darkgray;
+    text-align: center;
 }
 
 header img{
     width: 150px;
 
 }
-
-
 
 header,nav,footer{
     background: gray;
@@ -26,9 +25,10 @@ header,nav,footer{
     box-shadow: #333131 5px 5px;
 }
 
-#left-content iframe{
-   margin-left: 50px;
-    margin-top: auto;
+#left-content iframe,#right-content iframe{
+    width: 80%;
+    margin: 10px 10%;
+    box-shadow: #333131 5px 5px;
 }
 
 
