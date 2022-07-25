@@ -7,6 +7,10 @@ header{
     background: #484848;
     color: white;
     padding-left: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 header h1,nav h4{
@@ -17,6 +21,14 @@ nav{
     background: #630000;
     color: white;
     padding-left: 10px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 57px;
+}
+
+section{
+    margin-top: 95px;
 }
 
 section,#main-content,#side-content{
@@ -40,6 +52,12 @@ article div{
 article{
     text-align: justify;
     text-indent: 10px;
+}
+
+aside{
+    position: fixed;
+    top: 95px;
+    right: 0;
 }
 
 aside p {
