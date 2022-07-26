@@ -11,6 +11,7 @@ header img{
 }
 
 header,nav,footer{
+    border-radius: 5px;
     background: gray;
     box-shadow: #333131 5px 5px;
     margin: 10px 0;
@@ -28,18 +29,21 @@ nav{
     margin-top: 87px;
 }
 
+
+
 nav a{
     text-decoration: none;
     color: white;
+    border-radius: 5px;
 }
 
 nav a:hover{
     color: #3B5998;
-    font-weight: bold;
+    background: #C0C0C0;
 }
 
 .border{
-    border-right: white 1px solid;
+    border-right: #C0C0C0 1px solid;
 }
 
 #page{
@@ -50,6 +54,7 @@ nav a:hover{
     margin: 10px;
     background: gray;
     box-shadow: #333131 5px 5px;
+    border-radius: 5px;
 }
 
 #left-content iframe,#right-content iframe{

@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    background: #E9EBEE;
+}
+
+/*----header----*/
+header {
+    background: #3B5998;
+    padding: 5px;
+}
+
+#logo {
+    width: 28px;
+    height: 28px;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+header p {
+    margin: 6px;
+    color: white;
+}
+
+input {
+    width: 100%;
+    height: 24px;
+}
+
+#logo, input, button {
+    border-radius: 5px;
+    border: white 2px solid;
+}
+
+.icon {
+    width: auto;
+    height: auto;
+    margin: 3px;
+    font-variation-settings: 'FILL' 1, 'wght' 600;
+}
+
+
+/*----left side----*/
+
+.ads {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/*@media only screen and (min-width:1241px){*/
+.col-l-1 {
+    width: 8.33333%;
+}
+
+.col-l-2 {
+    width: 16.66666%;
+}
+
+.col-l-3 {
+    width: 25%;
+}
+
+.col-l-4 {
+    width: 33.333333%;
+}
+
+.col-l-5 {
+    width: 41.666666%;
+}
+
+.col-l-6 {
+    width: 50%;
+}
+
+.col-l-7 {
+    width: 58.333333%;
+}
+
+.col-l-8 {
+    width: 66.666666%;
+}
+
+.col-l-9 {
+    width: 75%;
+}
+
+.col-l-10 {
+    width: 83.333333%;
+}
+
+.col-l-11 {
+    width: 91.666666%;
+}
+
+.col-l-12 {
+    width: 100%;
+}
+
+/*}*/
