@@ -16,17 +16,17 @@ public class CalculatorServlet extends HttpServlet {
         String result = "";
         switch (operator) {
             case "+":
-                result = "" + (firstOperand + secondOperand);
+                result = String.valueOf((firstOperand + secondOperand));
                 break;
             case "-":
-                result = "" + (firstOperand - secondOperand);
+                result = String.valueOf((firstOperand - secondOperand));
                 break;
             case "*":
-                result = "" + firstOperand * secondOperand;
+                result = String.valueOf(firstOperand * secondOperand);
                 break;
             case "/": {
                 if (secondOperand != 0) {
-                    result = "" + (firstOperand / secondOperand);
+                    result = String.valueOf((firstOperand / secondOperand));
                     break;
                 } else {
                     try {
