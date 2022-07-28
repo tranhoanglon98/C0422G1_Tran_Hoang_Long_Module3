@@ -12,7 +12,7 @@
 </head>
 <body>
 <div>
-    <form action="/discount" method="get">
+    <form action="/discount" method="post">
         <p>Enter product description</p>
         <input type="text" name="description" placeholder="product description">
         <p>Enter list price</p>

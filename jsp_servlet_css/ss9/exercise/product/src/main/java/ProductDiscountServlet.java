@@ -7,6 +7,11 @@ import java.io.IOException;
 public class ProductDiscountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
         String description = request.getParameter("description");
         double price = Double.parseDouble(request.getParameter("price"));
@@ -16,10 +21,5 @@ public class ProductDiscountServlet extends HttpServlet {
         request.setAttribute("discountAmount", discountAmount);
         request.setAttribute("discountPrice", discountPrice);
         requestDispatcher.forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }
