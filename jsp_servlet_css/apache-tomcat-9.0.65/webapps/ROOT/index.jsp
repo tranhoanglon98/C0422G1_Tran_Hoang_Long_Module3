@@ -15,12 +15,18 @@
             border-radius: 5px;
             width: 35%;
             color: aquamarine;
+            box-shadow: #484848 5px 5px;
+            padding: 10px;
         }
         input,button,select{
             height: 50px;
             background: aquamarine;
             border-radius: 5px;
             border: none;
+        }
+        form{
+            margin: 10px;
+            width: 100%;
         }
     </style>
 </head>
@@ -36,7 +42,7 @@
                 <option>*</option>
                 <option>/</option>
             </select>
-            <input type="text" name="secondOperand">
+            <input type="number" name="secondOperand">
             <button type="submit">Calculate</button>
         </form>
         <h3>Result: ${result} </h3>
