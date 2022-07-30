@@ -140,7 +140,7 @@ public class ProductServlet extends HttpServlet {
 
         String description = request.getParameter("description");
 
-        String producer = request.getParameter("Producer");
+        String producer = request.getParameter("producer");
 
        Product product = new Product(id,name,price,description,producer);
 
