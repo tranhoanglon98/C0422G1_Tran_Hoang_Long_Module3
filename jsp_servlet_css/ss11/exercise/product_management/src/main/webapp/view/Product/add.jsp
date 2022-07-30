@@ -13,22 +13,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
-<body>
+<body style="background: linear-gradient(to right,#8E0E00,#1F1C18)">
 <div>
-    <%--    <h2>ADD  NEW PRODUCT</h2>--%>
-    <%--    <button><a href="/">Back to product management page</a></button>--%>
-    <%--    <button><a href="/product?action=display"> go to product list page</a></button>--%>
-
-    <%--    <form action="/product?action=add" method="post">--%>
-    <%--        <input type="text" name="name" placeholder="Product name">--%>
-    <%--        <input type="number" name="price" placeholder="Product price">--%>
-    <%--        <input type="text" name="description" placeholder="description">--%>
-    <%--        <input type="text" name="Producer" placeholder="Producer">--%>
-    <%--        <button type="submit">Add</button>--%>
-    <%--    </form>--%>
-
     <div>
-        <div style="width: 40%; margin: 10% 0 0 30%">
+        <div style="width: 40%; margin: 5% 0 0 30%" class="text-success">
             <h3>Add new product</h3>
             <form action="/product?action=add" method="post">
                 <div class="form-group">
@@ -48,8 +36,8 @@
                     <input type="text" class="form-control" id="inputProducer" placeholder="producer" name="producer">
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary">Add</button>
-                <a class="btn btn-primary" href="/" role="button" style="float: right">Back to product management</a>
+                <button type="submit" class="btn btn-outline-success">Add</button>
+                <a class="btn btn-outline-success" href="/" role="button" style="float: right">Back to product management</a>
             </form>
             <c:if test="${response != null}">
                 <h5>${response}</h5>
