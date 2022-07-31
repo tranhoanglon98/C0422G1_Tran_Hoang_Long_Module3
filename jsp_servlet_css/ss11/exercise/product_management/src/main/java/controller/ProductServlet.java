@@ -158,7 +158,7 @@ public class ProductServlet extends HttpServlet {
 
         String description = request.getParameter("description");
 
-        String producer = request.getParameter("Producer");
+        String producer = request.getParameter("producer");
 
         List<Product> productList = productService.findAll();
 
