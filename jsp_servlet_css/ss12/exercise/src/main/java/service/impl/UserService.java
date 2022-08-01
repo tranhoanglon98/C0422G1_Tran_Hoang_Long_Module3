@@ -8,7 +8,7 @@ import service.IUserService;
 import java.util.List;
 
 public class UserService implements IUserService {
-    private static IUserRepository userRepository = new UserRepository();
+    private IUserRepository userRepository = new UserRepository();
 
     @Override
     public List<User> findAll() {
@@ -16,27 +16,32 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void addNewUser(int id, User user) {
-
+    public void addNewUser( User user) {
+        userRepository.addNewUser(user);
     }
 
     @Override
-    public void editUser(int id, User user) {
-
+    public void editUser(User user) {
+        userRepository.editUser(user);
     }
 
     @Override
     public void deleteUser(int id) {
-
+        userRepository.deleteUser(id);
     }
 
     @Override
     public List<User> findByCountry(String country) {
-        return null;
+        return userRepository.findByCountry(country);
     }
 
     @Override
     public List<User> sortByName() {
-        return null;
+        return userRepository.sortByName();
+    }
+
+    @Override
+    public User findById(int id) {
+        return userRepository.findById(id);
     }
 }

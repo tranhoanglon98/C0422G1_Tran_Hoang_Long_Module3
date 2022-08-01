@@ -8,13 +8,15 @@ public interface IUserService {
 
     List<User> findAll();
 
-    void addNewUser(int id, User user);
+    void addNewUser(User user);
 
-    void editUser(int id, User user);
+    void editUser(User user);
 
     void deleteUser(int id);
 
     List<User> findByCountry(String country);
 
     List<User> sortByName();
+
+    User findById(int id);
 }
