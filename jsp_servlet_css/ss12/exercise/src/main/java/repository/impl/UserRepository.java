@@ -16,12 +16,11 @@ public class UserRepository implements IUserRepository {
     private static final String INSERT_USERS = "INSERT INTO users" + "  (name, email, country) VALUES " +
             " (?, ?, ?);";
 
-    private static final String FIND_BY_ID = "select * from users where id =" + " (?);";
+    private static final String FIND_BY_ID = "select * from users where id =" + " ?;";
     private static final String UPDATE_USERS = "update users set name = ? , email =?,country=? where id =?;";
     private static final String DELETE_USERS = "delete from users where id = ?;";
     private static final String FIND_BY_COUNTRY = "select * from users where country like" +"?"+";";
     private static final String SORT_BY_NAME = "select * from users order by name;";
-//    private static final String FIND_BY_COUNTRY = "select * from users where country like"+ '%'+"?"+'%' +";";
     @Override
     public List<User> findAll() {
         List<User> userList = new LinkedList<>();
@@ -93,7 +92,7 @@ public class UserRepository implements IUserRepository {
         Connection connection = BaseRepository.getConnectDB();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_COUNTRY);
-            preparedStatement.setString(1,searchCountry);
+            preparedStatement.setString(1, "%"+ searchCountry+"%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 int id = resultSet.getInt("id");
@@ -136,7 +135,7 @@ public class UserRepository implements IUserRepository {
         User user = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID);
-            preparedStatement.setString(1, String.valueOf(id));
+            preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String name = resultSet.getString("name");

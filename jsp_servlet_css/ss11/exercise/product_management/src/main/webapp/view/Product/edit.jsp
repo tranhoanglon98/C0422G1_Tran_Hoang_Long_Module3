@@ -26,7 +26,7 @@
         <form action="/product?action=edit&id=${product.id}" method="post">
             <div class="form-group">
                 <label for="inputId">Product Id</label>
-                <input type="text" class="form-control" id="inputId" value="${product.id}" name="id" disabled>
+                <input type="text" class="form-control" id="inputId" value="${product.id}" name="id" readonly>
             </div>
             <div class="form-group">
                 <label for="inputName">Product name</label>

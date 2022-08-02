@@ -26,11 +26,13 @@ public class UserServlet extends HttpServlet {
                 break;
             case "edit":
                 showEditPage(request, response);
+                break;
             case "delete":
                 deleteUser(request, response);
                 break;
-            case "findById":
-                findById(request, response);
+            case "findByCountry":
+                findByCountry(request, response);break;
+
             case "sortByName":
                 sortByName(request, response);
                 break;
@@ -57,7 +59,7 @@ public class UserServlet extends HttpServlet {
         showList(request, response, userList);
     }
 
-    private void findById(HttpServletRequest request, HttpServletResponse response) {
+    private void findByCountry(HttpServletRequest request, HttpServletResponse response) {
         String country = request.getParameter("country");
         List<User> userList = userService.findByCountry(country);
         showList(request, response, userList);

@@ -13,14 +13,15 @@
 <body>
 <form action="/user" method="post">
     <h2>Edit User</h2>
-    <input type="text" value="${user.id}" disabled>
+    <p>User Id:</p>
+    <input type="text" name="id" value="${user.id}" readonly>
     <p>User Name:</p>
     <input type="text" name="name" value="${user.name}" />
     <p>User Email:</p>
     <input type="text" name="email" value="${user.email}" />
     <p>Country:</p>
     <input type="text" name="country" value="${user.country}"/>
-    <button type="submit" name="action" value="add">save</button>
+    <button type="submit" name="action" value="edit">save</button>
 </form>
 </body>
 </html>
