@@ -42,6 +42,21 @@ public class UserServlet extends HttpServlet {
         }
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "add":
+                addNewUser(request, response);
+                break;
+            case "edit":
+                editUser(request, response);
+        }
+    }
+
     private void showList(HttpServletRequest request, HttpServletResponse response, List<User> userList) {
         request.setAttribute("userList", userList);
         try {
@@ -73,6 +88,7 @@ public class UserServlet extends HttpServlet {
 
     private void showEditPage(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
         User user = userService.findById(id);
         request.setAttribute("user", user);
         try {
@@ -97,22 +113,6 @@ public class UserServlet extends HttpServlet {
     private void showUserList(HttpServletRequest request, HttpServletResponse response) {
         List<User> userList = userService.findAll();
         showList(request, response, userList);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (action == null) {
-            action = "";
-        }
-        switch (action) {
-            case "add":
-                addNewUser(request, response);
-                break;
-            case "edit":
-                editUser(request, response);
-
-        }
     }
 
     private void editUser(HttpServletRequest request, HttpServletResponse response) {
