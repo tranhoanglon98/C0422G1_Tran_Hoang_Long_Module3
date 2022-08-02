@@ -16,96 +16,110 @@
     <link rel="stylesheet" href="/jsp_servlet_css/">
 </head>
 <body>
-<div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">List of Users</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/user?action=add">Add new user</a>
-                    </li>
-                </ul>
-                <form class="d-flex" action="/user" method="get">
-                    <input name="country" class="form-control me-2" type="search" placeholder="Find by country"
-                           aria-label="Search">
-                    <button class="btn btn-outline-success" name="action" value="findByCountry" type="submit">Find
-                    </button>
-                </form>
+<div class="row"  style="position: relative">
+    <div class="col-lg-12">
+        <video autoplay loop muted width="100%">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-starry-sky-on-a-quiet-night-in-the-forest-31613-large.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="col-lg-12" style="position: absolute">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand  text-light" href="#">List of Users</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active  text-light" aria-current="page" href="/user?action=add">Add new user</a>
+                                </li>
+                            </ul>
+                            <form class="d-flex" action="/user" method="get">
+                                <input name="country" class="form-control me-2" type="search" placeholder="Find by country"
+                                       aria-label="Search">
+                                <button class="btn btn-outline-light" name="action" value="findByCountry" type="submit">Find
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="container-fluid col-lg-12 pt-5">
+                <div class="row">
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-8 ">
+                            <table class="table text-light">
+                                </tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <th><span>Name</span><a href="/user?action=sortByName" style="float: right"><span
+                                            class="material-symbols-outlined text-light">sort_by_alpha</span></a>
+                                    </th>
+                                    <th>Email</th>
+                                    <th colspan="3">Country</th>
+                                </tr>
+                                <c:forEach var="user" items="${userList}">
+                                    <tr>
+                                        <td><c:out value="${user.id}"/></td>
+                                        <td><c:out value="${user.name}"/></td>
+                                        <td><c:out value="${user.email}"/></td>
+                                        <td><c:out value="${user.country}"/></td>
+                                        <td>
+                                            <a href="/user?action=edit&id=${user.id}">
+                                                <button type="button" class="btn btn-outline-light">Edit</button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
+                                                        data-bs-target="#modal-${user.id}">
+                                                    Delete
+                                                </button>
+
+                                                <div class="modal fade" id="modal-${user.id}" tabindex="-1"
+                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>ID: ${user.id}</p>
+                                                                <p>Name: ${user.name}</p>
+                                                                <p>Email: ${user.email}</p>
+                                                                <p>Country: ${user.country}</p>
+                                                                <h5>Are you sure that you want to delete this User?</h5>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                                    Close
+                                                                </button>
+                                                                <a href="/user?action=delete&id=${user.id}">
+                                                                    <button type="button" class="btn btn-danger">Yes</button>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                        </div>
+                </div>
             </div>
         </div>
-    </nav>
-</div>
-<div class="container-fluid row pt-5">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8">
-        <table class="table table-hover">
-            </tr>
-            <tr>
-                <th>ID</th>
-                <th><span>Name</span><a href="/user?action=sortByName" style="float: right"><span
-                        class="material-symbols-outlined">sort_by_alpha</span></a>
-                </th>
-                <th>Email</th>
-                <th colspan="3">Country</th>
-            </tr>
-            <c:forEach var="user" items="${userList}">
-                <tr>
-                    <td><c:out value="${user.id}"/></td>
-                    <td><c:out value="${user.name}"/></td>
-                    <td><c:out value="${user.email}"/></td>
-                    <td><c:out value="${user.country}"/></td>
-                    <td>
-                        <a href="/user?action=edit&id=${user.id}">
-                            <button type="button" class="btn btn-outline-primary">Edit</button>
-                        </a>
-                    </td>
-                    <td>
-                        <div>
-                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                    data-bs-target="#modal-${user.id}">
-                                Delete
-                            </button>
-
-                            <div class="modal fade" id="modal-${user.id}" tabindex="-1"
-                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>ID: ${user.id}</p>
-                                            <p>Name: ${user.name}</p>
-                                            <p>Email: ${user.email}</p>
-                                            <p>Country: ${user.country}</p>
-                                            <h5>Are you sure that you want to delete this User?</h5>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                Close
-                                            </button>
-                                            <a href="/user?action=delete&id=${user.id}">
-                                                <button type="button" class="btn btn-danger">Yes</button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
     </div>
 </div>
+
 <script src="/view/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 </body>
 </html>
