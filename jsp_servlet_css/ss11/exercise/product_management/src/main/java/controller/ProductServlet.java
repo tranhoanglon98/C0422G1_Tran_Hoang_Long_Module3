@@ -41,7 +41,21 @@ public class ProductServlet extends HttpServlet {
             default:
 
         }
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        String action = request.getParameter("action");
+        switch (action) {
+            case "add":
+                addNewProduct(request, response);
+            case "edit":
+                editProduct(request,response);
+                break;
+            default:
+
+        }
     }
 
     private void showProductDetail(HttpServletRequest request, HttpServletResponse response) {
@@ -113,21 +127,6 @@ public class ProductServlet extends HttpServlet {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        String action = request.getParameter("action");
-        switch (action) {
-            case "add":
-                addNewProduct(request, response);
-            case "edit":
-                editProduct(request,response);
-                break;
-            default:
-
         }
     }
 
