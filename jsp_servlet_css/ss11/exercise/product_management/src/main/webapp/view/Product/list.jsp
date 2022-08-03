@@ -47,48 +47,50 @@
                     <button type="button" class="btn btn-outline-light">Edit</button>
                 </a></td>
                 <td>
-                    <button type="button" onclick="callDeleteModal(${product.id},${product.name},${product.price},${product.producer})"
+                    <button type="button"
+                            onclick="callDeleteModal('${product.id}','${product.name}','${product.price}','${product.producer}')"
                             class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#delete-modal">
                         Delete
                     </button>
                 </td>
                 </c:forEach>
-                <div>
-                    <div class="modal fade text-dark" id="delete-modal" tabindex="-1"
-                         aria-labelledby="exampleModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Delete product</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <form action="/product" method="get">
-                                    <div class="modal-body">
-                                        <p id="product-id"></p>
-                                        <p id="product-name"></p>
-                                        <p id="product-price"></p>
-                                        <p id="product-producer"></p>
-                                        <h5>Are you sure that you want to delete this product ?</h5>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                                        </button>
-                                            <button type="submit" name="action" value="remove" class="btn btn-danger">Yes</button>
-                                    </div>
-                                </form>
+        </table>
+        <form action="/product" method="get">
+            <div>
+                <div class="modal fade text-dark" id="delete-modal" tabindex="-1"
+                     aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Delete product</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <span id="product-id"></span>
+                                <p id="product-name"></p>
+                                <p id="product-price"></p>
+                                <p id="product-producer"></p>
+                                <h5>Are you sure that you want to delete this product ?</h5>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                </button>
+                                <button type="submit" name="action" value="remove" class="btn btn-danger">Yes</button>
                             </div>
                         </div>
                     </div>
                 </div>
-        </table>
-        <tr><a class="btn btn-outline-light" href="/" role="button">Back to product management page</a></tr>
+            </div>
+        </form>
+        <a class="btn btn-outline-light" href="/" role="button">Back to product management page</a>
     </div>
 </div>
 <script>
     function callDeleteModal(id, name, price, producer) {
-        document.getElementById("product-id").innerHTML = '<input name="id" type="text" hidden value="'+id+'">';
+        console.log('kkkkkkkkkkkkkkkkkk')
+        document.getElementById("product-id").innerHTML = '<input readonly type="text" name="id" value="' + id + '">';
         document.getElementById("product-name").innerText = name;
         document.getElementById("product-price").innerText = price;
         document.getElementById("product-producer").innerText = producer;
