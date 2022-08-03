@@ -11,6 +11,8 @@ import java.util.List;
 public class UserRepository implements IUserRepository {
     private static final String SELECT_ALL_USERS = "call display_user_list;";
     private static final String INSERT_USERS = "call add_user(?,?,?);";
+    private static final String INSERT_USERS_DETAIL = "call add_user_detail(?,?,?);";
+
     private static final String FIND_BY_ID = "select * from users where id =" + " ?;";
     private static final String UPDATE_USERS = "call update_user(?,?,?,?);";
     private static final String DELETE_USERS = "call delete_user(?);";
@@ -144,6 +146,38 @@ public class UserRepository implements IUserRepository {
             e.printStackTrace();
         }
         return user;
+    }
+
+    @Override
+    public void addUserTransaction() {
+        Connection connection = BaseRepository.getConnectDB();
+        CallableStatement callableStatement ;
+        try {
+            connection.setAutoCommit(false);
+            callableStatement = connection.prepareCall(INSERT_USERS);
+            callableStatement.setString(1,"Long");
+            callableStatement.setString(2,"long23@gmail.com");
+            callableStatement.setString(3,"VN");
+            int affectRow =  callableStatement.executeUpdate();
+
+            callableStatement = connection.prepareCall(INSERT_USERS_DETAIL);
+            callableStatement.setString(1,"Huế");
+            callableStatement.setString(2,"Cầu thủ");
+            callableStatement.setString(3,"gold");
+            affectRow += callableStatement.executeUpdate();
+
+            if (affectRow==2){
+                connection.commit();
+            }else
+                connection.rollback();
+        } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        }
     }
 
 }

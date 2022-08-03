@@ -19,4 +19,6 @@ public interface IUserService {
     List<User> sortByName();
 
     User findById(int id);
+
+    void addUserTransaction();
 }

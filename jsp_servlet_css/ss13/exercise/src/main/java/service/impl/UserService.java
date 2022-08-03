@@ -44,4 +44,9 @@ public class UserService implements IUserService {
     public User findById(int id) {
         return userRepository.findById(id);
     }
+
+    @Override
+    public void addUserTransaction() {
+        userRepository.addUserTransaction();
+    }
 }
