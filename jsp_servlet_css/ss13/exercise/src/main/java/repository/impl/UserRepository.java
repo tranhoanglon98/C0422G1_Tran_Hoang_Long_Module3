@@ -4,31 +4,27 @@ import model.User;
 import repository.BaseRepository;
 import repository.IUserRepository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
 public class UserRepository implements IUserRepository {
-    private static final String SELECT_ALL_USERS = "select * from users";
-    private static final String INSERT_USERS = "INSERT INTO users" + "  (name, email, country) VALUES " +
-            " (?, ?, ?);";
-
+    private static final String SELECT_ALL_USERS = "call display_user_list;";
+    private static final String INSERT_USERS = "call add_user(?,?,?);";
     private static final String FIND_BY_ID = "select * from users where id =" + " ?;";
-    private static final String UPDATE_USERS = "update users set name = ? , email =?,country=? where id =?;";
-    private static final String DELETE_USERS = "delete from users where id = ?;";
-    private static final String FIND_BY_COUNTRY = "select * from users where country like" +"?"+";";
+    private static final String UPDATE_USERS = "call update_user(?,?,?,?);";
+    private static final String DELETE_USERS = "call delete_user(?);";
+    private static final String FIND_BY_COUNTRY = "select * from users where country like" + "?" + ";";
     private static final String SORT_BY_NAME = "select * from users order by name;";
+
     @Override
     public List<User> findAll() {
         List<User> userList = new LinkedList<>();
         Connection connection = BaseRepository.getConnectDB();
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            CallableStatement callableStatement = connection.prepareCall(SELECT_ALL_USERS);
+            ResultSet resultSet = callableStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
@@ -39,7 +35,6 @@ public class UserRepository implements IUserRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return userList;
     }
 
@@ -47,11 +42,11 @@ public class UserRepository implements IUserRepository {
     public void addNewUser(User user) {
         Connection connection = BaseRepository.getConnectDB();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS);
-            preparedStatement.setString(1, user.getName());
-            preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setString(3, user.getCountry());
-            preparedStatement.executeUpdate();
+            CallableStatement callableStatement = connection.prepareCall(INSERT_USERS);
+            callableStatement.setString(1, user.getName());
+            callableStatement.setString(2, user.getEmail());
+            callableStatement.setString(3, user.getCountry());
+            callableStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -61,12 +56,12 @@ public class UserRepository implements IUserRepository {
     public void editUser(User user) {
         Connection connection = BaseRepository.getConnectDB();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USERS);
-            preparedStatement.setString(1, user.getName());
-            preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setString(3, user.getCountry());
-            preparedStatement.setInt(4, user.getId());
-            preparedStatement.executeUpdate();
+            CallableStatement callableStatement = connection.prepareCall(UPDATE_USERS);
+            callableStatement.setInt(1, user.getId());
+            callableStatement.setString(2, user.getName());
+            callableStatement.setString(3, user.getEmail());
+            callableStatement.setString(4, user.getCountry());
+            callableStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -76,9 +71,9 @@ public class UserRepository implements IUserRepository {
     public void deleteUser(int id) {
         Connection connection = BaseRepository.getConnectDB();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USERS);
-            preparedStatement.setInt(1,id);
-            preparedStatement.executeUpdate();
+            CallableStatement callableStatement = connection.prepareCall(DELETE_USERS);
+            callableStatement.setInt(1, id);
+            callableStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -92,14 +87,14 @@ public class UserRepository implements IUserRepository {
         Connection connection = BaseRepository.getConnectDB();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_COUNTRY);
-            preparedStatement.setString(1, "%"+ searchCountry+"%");
+            preparedStatement.setString(1, "%" + searchCountry + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String email = resultSet.getString("email");
                 String country = resultSet.getString("country");
-                userList.add(new User(id,name,email,country));
+                userList.add(new User(id, name, email, country));
             }
         } catch (SQLException e) {
             e.printStackTrace();

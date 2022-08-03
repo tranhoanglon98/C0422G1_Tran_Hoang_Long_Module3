@@ -27,11 +27,10 @@ public class UserServlet extends HttpServlet {
             case "edit":
                 showEditPage(request, response);
                 break;
-            case "delete":
-                deleteUser(request, response);
-                break;
+
             case "findByCountry":
-                findByCountry(request, response);break;
+                findByCountry(request, response);
+                break;
 
             case "sortByName":
                 sortByName(request, response);
@@ -54,6 +53,9 @@ public class UserServlet extends HttpServlet {
                 break;
             case "edit":
                 editUser(request, response);
+            case "delete":
+                deleteUser(request, response);
+                break;
         }
     }
 
@@ -81,7 +83,7 @@ public class UserServlet extends HttpServlet {
     }
 
     private void deleteUser(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("user-id"));
         userService.deleteUser(id);
         showUserList(request, response);
     }
