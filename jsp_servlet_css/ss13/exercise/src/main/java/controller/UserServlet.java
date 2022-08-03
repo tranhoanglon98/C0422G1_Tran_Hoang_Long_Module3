@@ -35,6 +35,9 @@ public class UserServlet extends HttpServlet {
             case "sortByName":
                 sortByName(request, response);
                 break;
+            case "transaction":
+                addUseTransaction(request, response);
+                break;
             default:
                 showUserList(request, response);
 
@@ -57,6 +60,10 @@ public class UserServlet extends HttpServlet {
                 deleteUser(request, response);
                 break;
         }
+    }
+
+    private void addUseTransaction(HttpServletRequest request, HttpServletResponse response) {
+        userService.addUserTransaction();
     }
 
     private void showList(HttpServletRequest request, HttpServletResponse response, List<User> userList) {

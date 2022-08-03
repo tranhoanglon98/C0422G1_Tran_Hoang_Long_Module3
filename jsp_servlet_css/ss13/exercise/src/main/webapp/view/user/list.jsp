@@ -136,6 +136,7 @@
     </div>
 </div>
 </div>
+<a href="/user?action=transaction"><button>add use transaction</button></a>
 <script>
     function callModal(id, name, email, country) {
         document.getElementById("user-id").value = id;
