@@ -15,8 +15,8 @@
     <link href='https://fonts.googleapis.com/css?family=Bad Script' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/121b5e5230.js" crossorigin="anonymous"></script>
 </head>
-<body style="font-family: Bad Script,serif">
-<div class="container-fluid" style="background: #E0FFFF">
+<body style="font-family: Bad Script,serif ;background: #E0FFFF">
+<div class="container-fluid">
     <%@include file="view/service/nav.jsp" %>
     <div class="col-lg-10">
         <div class="row">
