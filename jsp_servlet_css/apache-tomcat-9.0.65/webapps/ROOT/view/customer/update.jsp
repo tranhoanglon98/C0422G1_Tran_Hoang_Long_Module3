@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: DELL
@@ -22,7 +23,7 @@
             <div class="row" style="width: 95%">
                 <div class="col-lg-12 text-center"><h2>Update Customer</h2></div>
                 <div class="col-lg-12 fw-bold text-dark">
-                    <form action="#">
+                    <form action="/customer" method="post">
                         <div class="row">
                             <div class="col-lg-6 ps-5 pe-5">
                                 <div class="row pb-4">
@@ -32,13 +33,15 @@
                                 </div>
                                 <div class="row pb-4">
                                     <span>Birthday:</span>
-                                    <input type="number" name="birthday" class="form-control" placeholder="Birthday"
+                                    <input type="date" name="birthday" class="form-control" placeholder="Birthday"
                                            aria-label="Birthday">
                                 </div>
                                 <div class="row pb-4">
                                     <span>Gender:</span>
-                                    <input type="text" name="gender" class="form-control" placeholder="Gender"
-                                           aria-label="Gender">
+                                    <select name="gender" class="form-control">
+                                        <option value="true">Nam</option>
+                                        <option value="false">Nữ</option>
+                                    </select>
                                 </div>
                                 <div class="row pb-4">
                                     <span>ID card</span>
@@ -46,7 +49,7 @@
                                            placeholder="ID card" aria-label="ID card">
                                 </div>
                                 <div class="row">
-                                    <button class="btn btn-dark text-warning">Save</button>
+                                    <button type="submit" name="action" value="add" class="btn btn-dark text-warning">Save</button>
                                 </div>
                             </div>
                             <div class="col-lg-6 ps-5 pe-5">
@@ -55,21 +58,24 @@
                                     <input type="number" name="phone" class="form-control" placeholder="Phone"
                                            aria-label="Phone">
                                 </div>
-                                <div class="row pb-4" id="standard">
+                                <div class="row pb-4">
                                     <span>Email</span>
-                                    <input type="number" name="email" class="form-control"
+                                    <input type="email" name="email" class="form-control"
                                            placeholder="Email"
                                            aria-label="Email">
                                 </div>
-                                <div class="row pb-4" id="convenience">
+                                <div class="row pb-4">
                                     <span>Customer type</span>
-                                    <input type="number" name="convenience" class="form-control"
-                                           placeholder="Customer type"
-                                           aria-label="Customer type">
+                                    <select name="customerType" class="form-control">
+                                        <c:forEach var="customerType" items="${customerTypeList}">
+                                            <option value="${customerType.customerTypeCode}">${customerType.customerType}</option>
+                                        </c:forEach>
+                                    </select>
                                 </div>
-                                <div class="row pb-4" id="floors">
+
+                                <div class="row pb-4">
                                     <span>Address</span>
-                                    <input type="number" name="address" class="form-control"
+                                    <input type="text" name="address" class="form-control"
                                            placeholder="Address"
                                            aria-label="Address">
                                 </div>

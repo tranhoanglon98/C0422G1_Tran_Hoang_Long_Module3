@@ -11,25 +11,25 @@
     <title>Title</title>
 </head>
 <body>
-<div class="col-lg-2 p-0 position-fixed end-0">
+<div class="col-lg-2 p-0 position-fixed end-0 top-0 bottom-0 shadow">
     <table class="table table-hover text-end"  id="nav">
         <th>
-            <a class="nav-link text-dark" href="#"><h2>Furama Resort</h2></a>
+            <a class="nav-link text-dark" href="/furama"><h2>Furama Resort</h2></a>
         </th>
         <tr>
-            <td><a class="nav-link text-dark" href="#"><h4>Employee</h4></a></td>
+            <td><a class="nav-link text-dark" href="/furama?action=employee"><h4>Employee</h4></a></td>
         </tr>
         <tr>
-            <td><a class="nav-link text-dark" href="#"><h4>Customer</h4></a></td>
+            <td><a class="nav-link text-dark" href="/furama?action=customer"><h4>Customer</h4></a></td>
         </tr>
         <tr>
-            <td><a class="nav-link text-dark" href="#"><h3>Service</h3></a></td>
+            <td><a class="nav-link text-dark" href="/furama?action=service"><h3>Service</h3></a></td>
         </tr>
         <tr>
-            <td><a class="nav-link text-dark" href="#"><h3>Contract</h3></a></td>
+            <td><a class="nav-link text-dark" href="/furama?action=contract"><h3>Contract</h3></a></td>
         </tr>
     </table>
-    <div class="position-fixed bottom-0">
+    <div class="position-absolute bottom-0">
         <div class="row ms-0 mb-3">
             <div class="col-lg-2"><span class="material-symbols-outlined">location_on</span></div>
             <div class="col-lg-10 p-0">

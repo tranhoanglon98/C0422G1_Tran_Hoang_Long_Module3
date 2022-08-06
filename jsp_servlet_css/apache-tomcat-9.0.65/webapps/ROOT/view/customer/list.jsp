@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: DELL
@@ -26,7 +27,7 @@
                     </div>
                     <table class="table table-hover fw-bold">
                         <tr>
-                            <th>#</th>
+                            <th>Customer Code</th>
                             <th>Name</th>
                             <th>Birthday</th>
                             <th>Gender</th>
@@ -37,67 +38,40 @@
                             <th>address</th>
                             <th></th>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>long</td>
-                            <td>03/03/2000</td>
-                            <td>male</td>
-                            <td>1111111</td>
-                            <td>222222</td>
-                            <td>123@gmail.com</td>
-                            <td>Diamond</td>
-                            <td>Hue</td>
-                            <td>
-                                <form action="#">
-                                    <button type="submit" class="btn btn-dark text-warning"><span
-                                            class="material-symbols-outlined">edit</span></button>
-                                    <button type="submit" class="btn btn-dark text-warning" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal"><span class="material-symbols-outlined">delete</span>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>long</td>
-                            <td>03/03/2000</td>
-                            <td>male</td>
-                            <td>1111111</td>
-                            <td>222222</td>
-                            <td>123@gmail.com</td>
-                            <td>Diamond</td>
-                            <td>Hue</td>
-                            <td>
-                                <form action="#">
-                                    <button type="submit" class="btn btn-dark text-warning"><span
-                                            class="material-symbols-outlined">edit</span></button>
-                                    <button type="submit" class="btn btn-dark text-warning"><span
-                                            class="material-symbols-outlined">delete</span></button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>long</td>
-                            <td>03/03/2000</td>
-                            <td>male</td>
-                            <td>1111111</td>
-                            <td>222222</td>
-                            <td>123@gmail.com</td>
-                            <td>Diamond</td>
-                            <td>Hue</td>
-                            <td>
-                                <form action="#">
-                                    <button type="submit" class="btn btn-dark text-warning"><span
-                                            class="material-symbols-outlined">edit</span></button>
-                                    <button type="submit" class="btn btn-dark text-warning"><span
-                                            class="material-symbols-outlined">delete</span></button>
-                                </form>
-                            </td>
-                        </tr>
+                        <c:forEach items="${customerList}" var="customer">
+                            <tr>
+                                <td>${customer.customerCode}</td>
+                                <td>${customer.name}</td>
+                                <td>${customer.birthDay}</td>
+                                <td>
+                                    <c:if test="${customer.gender == true}">
+                                        Nam
+                                    </c:if>
+                                    <c:if test="${customer.gender == false}">
+                                        Nữ
+                                    </c:if>
+                                </td>
+                                <td>${customer.idCard}</td>
+                                <td>${customer.phone}</td>
+                                <td>${customer.email}</td>
+                                <c:forEach items="${customerTypeList}" var="customerType">
+                                    <c:if test="${customerType.customerTypeCode == customer.customerTypeCode}">
+                                        <td>${customerType.customerType}</td>
+                                    </c:if>
+                                </c:forEach>
+                                <td>${customer.address}</td>
+                                <td>
+                                    <a href="/customer?action=update&id=${customer.customerCode}"><button type="submit" name="action" value=""  class="btn btn-dark text-warning"><span
+                                                class="material-symbols-outlined">edit</span></button></a>
+                                        <button type="submit" class="btn btn-dark text-warning" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal"><span class="material-symbols-outlined">delete</span>
+                                        </button>
+                                </td>
+                            </tr>
+                        </c:forEach>
                     </table>
                     <div class="col-lg-12">
-                        <button class="btn btn-dark text-warning">Add new Customer</button>
+                        <a href="/customer?action=add"><button class="btn btn-dark text-warning">Add new Customer</button></a>
                     </div>
                 </div>
             </div>
