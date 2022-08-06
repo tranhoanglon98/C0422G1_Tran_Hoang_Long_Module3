@@ -86,7 +86,34 @@ public class CustomerServlet extends HttpServlet {
             case "add":
                 addNewCustomer(request,response);
                 break;
+            case "update":
+                updateCustomer(request,response);
+                break;
+            case "delete":
+                deleteCustomer(request,response);
+                break;
         }
+    }
+
+    private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) {
+        int customerCode = Integer.parseInt(request.getParameter("customerCode"));
+        customerService.delete(customerCode);
+        showHomePage(request,response);
+    }
+
+    private void updateCustomer(HttpServletRequest request, HttpServletResponse response) {
+        int customerCode = Integer.parseInt(request.getParameter("customerCode"));
+        String name = request.getParameter("name");
+        String birthDay = request.getParameter("birthday");
+        boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
+        String idCard = request.getParameter("idCard");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        int customerType = Integer.parseInt(request.getParameter("customerType"));
+        String address = request.getParameter("address");
+        Customer customer = new Customer(name,birthDay,idCard,phone,email,address,customerCode,customerType,gender);
+        customerService.update(customer);
+        showHomePage(request,response);
     }
 
     private void addNewCustomer(HttpServletRequest request, HttpServletResponse response) {

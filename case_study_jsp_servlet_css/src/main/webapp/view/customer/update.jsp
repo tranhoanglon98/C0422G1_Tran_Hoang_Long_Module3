@@ -28,19 +28,26 @@
                             <div class="col-lg-6 ps-5 pe-5">
                                 <div class="row pb-4">
                                     <span>Name:</span>
-                                    <input type="text" value="${customer.name}" name="name" class="form-control" placeholder="Customer name"
+                                    <input type="text" value="${customer.name}" name="name" class="form-control"
+                                           placeholder="Customer name"
                                            aria-label="Customer name">
                                 </div>
                                 <div class="row pb-4">
                                     <span>Birthday:</span>
-                                    <input type="date" value="${customer.birthDay}" name="birthday" class="form-control" placeholder="Birthday"
+                                    <input type="date" value="${customer.birthDay}" name="birthday" class="form-control"
+                                           placeholder="Birthday"
                                            aria-label="Birthday">
                                 </div>
                                 <div class="row pb-4">
                                     <span>Gender:</span>
                                     <select name="gender" class="form-control">
-                                        <c:if test="${customer.}">
-
+                                        <c:if test="${customer.gender == true}">
+                                            <option value="true">Nam</option>
+                                            <option value="false">Nữ</option>
+                                        </c:if>
+                                        <c:if test="${customer.gender == false}">
+                                            <option value="false">Nữ</option>
+                                            <option value="true">Nam</option>
                                         </c:if>
                                     </select>
                                 </div>
@@ -50,13 +57,16 @@
                                            placeholder="ID card" aria-label="ID card">
                                 </div>
                                 <div class="row">
-                                    <button type="submit" name="action" value="add" class="btn btn-dark text-warning">Save</button>
+                                    <button type="submit" name="action" value="update" class="btn btn-dark text-warning">
+                                        Save
+                                    </button>
                                 </div>
                             </div>
                             <div class="col-lg-6 ps-5 pe-5">
                                 <div class="row pb-4">
                                     <span>Phone</span>
-                                    <input type="number" name="phone" value="${customer.phone}"  class="form-control" placeholder="Phone"
+                                    <input type="number" name="phone" value="${customer.phone}" class="form-control"
+                                           placeholder="Phone"
                                            aria-label="Phone">
                                 </div>
                                 <div class="row pb-4">
@@ -69,7 +79,14 @@
                                     <span>Customer type</span>
                                     <select name="customerType" class="form-control">
                                         <c:forEach var="customerType" items="${customerTypeList}">
-                                            <option value="${customerType.customerTypeCode}">${customerType.customerType}</option>
+                                            <c:if test="${customer.customerTypeCode == customerType.customerTypeCode}">
+                                                <option value="${customerType.customerTypeCode}">${customerType.customerType}</option>
+                                            </c:if>
+                                        </c:forEach>
+                                        <c:forEach var="customerType" items="${customerTypeList}">
+                                            <c:if test="${customer.customerTypeCode != customerType.customerTypeCode}">
+                                                <option value="${customerType.customerTypeCode}">${customerType.customerType}</option>
+                                            </c:if>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -80,6 +97,7 @@
                                            placeholder="Address"
                                            aria-label="Address">
                                 </div>
+                                <input type="hidden" name="customerCode" value="${customer.customerCode}">
                             </div>
                         </div>
                     </form>

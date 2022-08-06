@@ -22,65 +22,65 @@
         <div class="col-lg-10 d-flex pt-2 justify-content-center  position-absolute" style="top: 7%">
             <div class="row" style="width: 95%">
                 <div class="col-lg-12 text-center"><h2>Add New Customer</h2></div>
-                <div class="col-lg-12 fw-bold text-dark">
-                    <form action="/customer" method="post">
-                        <div class="row">
-                            <div class="col-lg-6 ps-5 pe-5">
-                                <div class="row pb-4">
-                                    <span>Name:</span>
-                                    <input type="text" name="name" class="form-control" placeholder="Customer name"
-                                           aria-label="Customer name">
-                                </div>
-                                <div class="row pb-4">
-                                    <span>Birthday:</span>
-                                    <input type="date" name="birthday" class="form-control" placeholder="Birthday"
-                                           aria-label="Birthday">
-                                </div>
-                                <div class="row pb-4">
-                                    <span>Gender:</span>
-                                    <select name="gender" class="form-control">
-                                        <option value="true">Nam</option>
-                                        <option value="false">Nữ</option>
-                                    </select>
-                                </div>
-                                <div class="row pb-4">
-                                    <span>ID card</span>
-                                    <input type="number" name="idCard" class="form-control"
-                                           placeholder="ID card" aria-label="ID card">
-                                </div>
-                                <div class="row">
-                                    <button type="submit" name="action" value="add" class="btn btn-dark text-warning">Add</button>
-                                </div>
+                <form action="/customer" method="post">
+                    <div class="row">
+                        <div class="col-lg-6 ps-5 pe-5">
+                            <div class="row pb-4">
+                                <span>Name:</span>
+                                <input type="text" name="name" class="form-control" placeholder="Customer name"
+                                       aria-label="Customer name">
                             </div>
-                            <div class="col-lg-6 ps-5 pe-5">
-                                <div class="row pb-4">
-                                    <span>Phone</span>
-                                    <input type="number" name="phone" class="form-control" placeholder="Phone"
-                                           aria-label="Phone">
-                                </div>
-                                <div class="row pb-4">
-                                    <span>Email</span>
-                                    <input type="email" name="email" class="form-control"
-                                           placeholder="Email"
-                                           aria-label="Email">
-                                </div>
-                                <div class="row pb-4">
-                                    <span>Customer type</span>
-                                    <select name="customerType" class="form-control">
-                                        <c:forEach var="customerType" items="${customerTypeList}">
-                                            <option value="${customerType.customerTypeCode}">${customerType.customerType}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                                <div class="row pb-4">
-                                    <span>Address</span>
-                                    <input type="text" name="address" class="form-control"
-                                           placeholder="Address"
-                                           aria-label="Address">
-                                </div>
+                            <div class="row pb-4">
+                                <span>Birthday:</span>
+                                <input type="date" name="birthday" class="form-control" placeholder="Birthday"
+                                       aria-label="Birthday">
+                            </div>
+                            <div class="row pb-4">
+                                <span>Gender:</span>
+                                <select name="gender" class="form-control">
+                                    <option value="true">Nam</option>
+                                    <option value="false">Nữ</option>
+                                </select>
+                            </div>
+                            <div class="row pb-4">
+                                <span>ID card</span>
+                                <input type="number" name="idCard" class="form-control"
+                                       placeholder="ID card" aria-label="ID card">
+                            </div>
+                            <div class="row">
+                                <button type="submit" name="action" value="add" class="btn btn-dark text-warning">Add</button>
                             </div>
                         </div>
-                    </form>
+                        <div class="col-lg-6 ps-5 pe-5">
+                            <div class="row pb-4">
+                                <span>Phone</span>
+                                <input type="number" name="phone" class="form-control" placeholder="Phone"
+                                       aria-label="Phone">
+                            </div>
+                            <div class="row pb-4">
+                                <span>Email</span>
+                                <input type="email" name="email" class="form-control"
+                                       placeholder="Email"
+                                       aria-label="Email">
+                            </div>
+                            <div class="row pb-4">
+                                <span>Customer type</span>
+                                <select name="customerType" class="form-control">
+                                    <c:forEach var="customerType" items="${customerTypeList}">
+                                        <option value="${customerType.customerTypeCode}">${customerType.customerType}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="row pb-4">
+                                <span>Address</span>
+                                <input type="text" name="address" class="form-control"
+                                       placeholder="Address"
+                                       aria-label="Address">
+                            </div>
+                        </div>
+                    </div>
+                </form>       <div class="col-lg-12 fw-bold text-dark">
+
                 </div>
             </div>
         </div>

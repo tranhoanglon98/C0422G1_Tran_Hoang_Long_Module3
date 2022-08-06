@@ -23,17 +23,17 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void delete(int id) {
-
+        customerRepository.delete(id);
     }
 
     @Override
     public void update(Customer customer) {
-
+        customerRepository.update(customer);
     }
 
     @Override
     public Customer findById(int id) {
-        return null;
+        return customerRepository.findById(id);
     }
 
     @Override
