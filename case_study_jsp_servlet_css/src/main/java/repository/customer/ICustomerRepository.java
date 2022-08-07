@@ -16,5 +16,8 @@ public interface ICustomerRepository {
 
     Customer findById(int id);
 
+    List<Customer> findByNameAndCode(String name, String code);
+
+
     List<CustomerType> showCustomerType();
 }

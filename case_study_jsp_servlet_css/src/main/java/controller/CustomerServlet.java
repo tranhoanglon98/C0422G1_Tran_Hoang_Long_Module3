@@ -29,8 +29,25 @@ public class CustomerServlet extends HttpServlet {
             case "update":
                 showUpdatePage(request,response);
                 break;
+            case "findByName":
+                findByName(request,response);
+                break;
             default:
                 showHomePage(request,response);
+        }
+    }
+
+    private void findByName(HttpServletRequest request, HttpServletResponse response) {
+        String code = request.getParameter("customerCode");
+        String name = request.getParameter("customerName");
+        List<Customer> customerList = customerService.findByNameAndCode(name,code);
+        request.setAttribute("customerList",customerList);
+        try {
+            request.getRequestDispatcher("view/customer/list.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

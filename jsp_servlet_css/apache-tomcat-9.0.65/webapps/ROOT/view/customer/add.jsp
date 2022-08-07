@@ -16,7 +16,7 @@
     <link href='https://fonts.googleapis.com/css?family=Bad Script' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/121b5e5230.js" crossorigin="anonymous"></script>
 </head>
-<body style="font-family: Bad Script,serif;background: #E0FFFF">
+<body style="font-family: Courgette,serif;background: #E0FFFF">
 <div class="container-fluid position-relative">
     <div class="row">
         <div class="col-lg-10 d-flex pt-2 justify-content-center  position-absolute" style="top: 7%">
@@ -79,7 +79,8 @@
                             </div>
                         </div>
                     </div>
-                </form>       <div class="col-lg-12 fw-bold text-dark">
+                </form>
+                <div class="col-lg-12 fw-bold text-dark">
 
                 </div>
             </div>
@@ -89,7 +90,7 @@
                  src="https://www.ibtmamericas.com/content/dam/sitebuilder/rxmx/ibtm-americas/2022/back-viajesbtc.jpg/_jcr_content/renditions/original.image_file.1279.640.file/back-viajesbtc.jpg"
                  alt="">
         </div>
-        <%@include file="/view/service/nav.jsp" %>
+        <%@include file="/view/facility/nav.jsp"%>
     </div>
 </div>
 <script>

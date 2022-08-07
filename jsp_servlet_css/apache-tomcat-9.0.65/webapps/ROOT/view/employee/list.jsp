@@ -14,7 +14,7 @@
     <link href='https://fonts.googleapis.com/css?family=Bad Script' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/121b5e5230.js" crossorigin="anonymous"></script>
 </head>
-<body style="font-family: Bad Script,serif;background: #E0FFFF">
+<body style="font-family: Courgette,serif;background: #E0FFFF">
 <div class="container-fluid position-relative">
     <div class="row">
         <div class="col-lg-10 d-flex justify-content-center  position-absolute" style="top: 10%">

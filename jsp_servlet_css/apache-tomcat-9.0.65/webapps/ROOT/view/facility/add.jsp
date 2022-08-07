@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: DELL
@@ -15,35 +16,36 @@
     <link href='https://fonts.googleapis.com/css?family=Bad Script' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/121b5e5230.js" crossorigin="anonymous"></script>
 </head>
-<body style="font-family: Bad Script,serif;background: #E0FFFF">
-    <div class="container-fluid position-relative">
-        <div class="row">
-            <div class="col-lg-10 d-flex justify-content-center  position-absolute" style="top: 7%">
-                <div class="row" style="width: 95%">
-                    <div class="col-lg-12 text-center"><h2>Add New Service</h2></div>
-                    <div class="col-lg-2 ps-5">
-                        <div class="form-check" onclick="showInput(roomInput.value)">
-                            <input class="form-check-input" type="radio" value="Room" name="flexRadioDefault" id="roomInput"
-                                   checked>
-                            <label class="form-check-label" for="roomInput">
-                                Room
-                            </label>
+<body style="font-family: Courgette,serif;background: #E0FFFF">
+<div class="container-fluid position-relative">
+    <div class="row">
+        <div class="col-lg-10 d-flex justify-content-center  position-absolute" style="top: 7%">
+            <div class="row" style="width: 95%">
+                <div class="col-lg-12 text-center"><h2>Add New Service</h2></div>
+                <div class="col-lg-12">
+                    <form class="row" action="/facility" method="post">
+                        <div class="col-lg-2 ps-5">
+                            <div class="form-check" onclick="showInput(roomInput.value)">
+                                <input class="form-check-input" type="radio" value="3" name="id" id="roomInput"
+                                       checked>
+                                <label class="form-check-label" for="roomInput">
+                                    Room
+                                </label>
+                            </div>
+                            <div class="form-check" onclick="showInput(villaInput.value)">
+                                <input class="form-check-input" value="1" type="radio" name="id" id="villaInput">
+                                <label class="form-check-label" for="villaInput">
+                                    Villa
+                                </label>
+                            </div>
+                            <div class="form-check" onclick="showInput(houseInput.value)">
+                                <input class="form-check-input" value="2" type="radio" name="id" id="houseInput">
+                                <label class="form-check-label" for="houseInput">
+                                    House
+                                </label>
+                            </div>
                         </div>
-                        <div class="form-check" onclick="showInput(villaInput.value)">
-                            <input class="form-check-input" value="Villa"  type="radio" name="flexRadioDefault" id="villaInput">
-                            <label class="form-check-label" for="villaInput">
-                                Villa
-                            </label>
-                        </div>
-                        <div class="form-check" onclick="showInput(houseInput.value)">
-                            <input class="form-check-input" value="House" type="radio" name="flexRadioDefault" id="houseInput">
-                            <label class="form-check-label" for="houseInput">
-                                House
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-10 fw-bold text-dark">
-                        <form action="#">
+                        <div class="col-lg-10 fw-bold text-dark">
                             <div class="row">
                                 <div class="col-lg-6 ps-5 pe-5">
                                     <div class="row pb-4">
@@ -58,7 +60,7 @@
                                     </div>
                                     <div class="row pb-4">
                                         <span>Cost:</span>
-                                        <input type="text" name="cost" class="form-control" placeholder="Cost"
+                                        <input type="number" name="cost" class="form-control" placeholder="Cost"
                                                aria-label="Cost">
                                     </div>
                                     <div class="row pb-4">
@@ -68,63 +70,65 @@
                                     </div>
                                     <div class="row pb-4">
                                         <span>Rental type</span>
-                                        <input type="number" name="rental_type" class="form-control"
-                                               placeholder="Rental type" aria-label="Rental type">
+                                        <select class="form-control" name="rentalType">
+                                        <c:forEach items="${rentTypeList}" var="rentType">
+                                            <option value="${rentType.rentId}">${rentType.rentTypeName}</option>
+                                        </c:forEach>
+                                        </select>
                                     </div>
                                     <div class="row">
-                                        <button class="btn btn-primary">Add</button>
+                                        <button type="submit" name="action" value="add" class="btn btn-primary">Add</button>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 ps-5 pe-5">
                                     <div class="row pb-4" style="display: none" id="standard">
                                         <span>Room standard</span>
-                                        <input type="number" name="standard" class="form-control"
+                                        <input type="text" name="standard" class="form-control"
                                                placeholder="Room standard"
                                                aria-label="Room standard">
                                     </div>
                                     <div class="row pb-4" style="display: none" id="convenience">
                                         <span>Other convenience</span>
-                                        <input type="number" name="convenience" class="form-control"
+                                        <input type="text" name="convenience" class="form-control"
                                                placeholder="Other convenience"
                                                aria-label="Other convenience">
                                     </div>
                                     <div class="row pb-4" style="display: none" id="floors">
                                         <span>Number of floors</span>
-                                        <input type="number" name="floors" class="form-control"
-                                               placeholder="Number of floors"
+                                        <input type="number" name="floors" value="0" class="form-control"
                                                aria-label="Number of floor">
                                     </div>
                                     <div class="row pb-4" style="display: block" id="free">
                                         <span>Facility free</span>
-                                        <input type="number" name="free" class="form-control"
+                                        <input type="text" name="free" class="form-control"
                                                placeholder="Facility free"
                                                aria-label="Facility free">
                                     </div>
                                     <div class="row pb-4" style="display: none" id="pool_area">
                                         <span>Pool area:</span>
                                         <input type="number" name="Pool" class="form-control"
-                                               placeholder="Pool area"
-                                               aria-label="Pool area">
+                                               value="0" aria-label="Pool area">
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="col-lg-10 pt-3 pb-3 d-flex justify-content-center">
-                <img style="border-radius: 30px" width="93%"
-                     src="https://s3.ap-southeast-2.amazonaws.com/travlr.com/uploads/images/venue/923e2231037b6ad79efbd200cf2a1d6e.jpg"
-                     alt="">
-            </div>
-            <%@include file="/view/service/nav.jsp" %>
         </div>
+        <div class="col-lg-10 pt-3 pb-3 d-flex justify-content-center">
+            <img style="border-radius: 30px" width="93%"
+                 src="https://s3.ap-southeast-2.amazonaws.com/travlr.com/uploads/images/venue/923e2231037b6ad79efbd200cf2a1d6e.jpg"
+                 alt="">
+        </div>
+        <%@include file="/view/facility/nav.jsp" %>
     </div>
+</div>
 <script>
     function showInput(value) {
         console.log(value)
         switch (value) {
-            case "House":
+            case "2":
                 console.log(value);
                 document.getElementById("standard").style.display = "block";
                 document.getElementById("floors").style.display = "block";
@@ -133,7 +137,7 @@
                 document.getElementById("pool_area").style.display = "none";
                 break;
 
-            case "Villa":
+            case "1":
                 document.getElementById("standard").style.display = "block";
                 document.getElementById("floors").style.display = "block";
                 document.getElementById("convenience").style.display = "block";
@@ -141,7 +145,7 @@
                 document.getElementById("pool_area").style.display = "block";
                 break;
 
-            case "Room":
+            case "3":
                 document.getElementById("standard").style.display = "none";
                 document.getElementById("floors").style.display = "none";
                 document.getElementById("convenience").style.display = "none";

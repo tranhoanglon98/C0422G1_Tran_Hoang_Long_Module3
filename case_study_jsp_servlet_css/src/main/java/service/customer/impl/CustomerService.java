@@ -40,4 +40,11 @@ public class CustomerService implements ICustomerService {
     public List<CustomerType> showCustomerType() {
         return customerRepository.showCustomerType();
     }
+
+    @Override
+    public List<Customer> findByNameAndCode(String name,String code) {
+        return customerRepository.findByNameAndCode(name,code);
+    }
+
+
 }

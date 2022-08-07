@@ -9,9 +9,11 @@
 <html>
 <head>
     <title>Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Bad Script' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>
 </head>
 <body>
-<div class="col-lg-2 p-0 position-fixed end-0 top-0 bottom-0 shadow">
+<div class="col-lg-2 p-0 position-fixed end-0 top-0 bottom-0 shadow" style="font-family: Bad Script">
     <table class="table table-hover text-end"  id="nav">
         <th>
             <a class="nav-link text-dark" href="/furama"><h2>Furama Resort</h2></a>
@@ -23,7 +25,7 @@
             <td><a class="nav-link text-dark" href="/furama?action=customer"><h4>Customer</h4></a></td>
         </tr>
         <tr>
-            <td><a class="nav-link text-dark" href="/furama?action=service"><h3>Service</h3></a></td>
+            <td><a class="nav-link text-dark" href="/facility"><h3>Service</h3></a></td>
         </tr>
         <tr>
             <td><a class="nav-link text-dark" href="/furama?action=contract"><h3>Contract</h3></a></td>

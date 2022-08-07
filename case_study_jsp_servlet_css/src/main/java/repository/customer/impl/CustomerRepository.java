@@ -16,6 +16,7 @@ public class CustomerRepository implements ICustomerRepository {
     private final String ADD_NEW_CUSTOMER = "call add_new_customer(?,?,?,?,?,?,?,?);";
     private final String UPDATE_CUSTOMER = "call update_customer(?,?,?,?,?,?,?,?,?);";
     private final String DELETE_CUSTOMER = "call delete_customer (?);";
+    private final String FIND_BY_NAME = "select * from khach_hang where ho_ten like ? and ma_khach_hang like ?;";
 
     @Override
     public List<Customer> findAll() {
@@ -119,6 +120,33 @@ public class CustomerRepository implements ICustomerRepository {
             e.printStackTrace();
         }
         return customer;
+    }
+
+    @Override
+    public List<Customer> findByNameAndCode(String name, String code) {
+        List<Customer> customerList = new LinkedList<>();
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_NAME);
+            preparedStatement.setString(1,"%"+name+"%");
+            preparedStatement.setString(2,"%"+code+"%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String customerName = resultSet.getString("ho_ten");
+                String birthDay = resultSet.getString("ngay_sinh");
+                String idCard = resultSet.getString("so_cmnd");
+                String phone = resultSet.getString("so_dien_thoai");
+                String email = resultSet.getString("email");
+                String address = resultSet.getString("dia_chi");
+                int customerCode = resultSet.getInt("ma_khach_hang");
+                int customerTypeCode = resultSet.getInt("ma_loai_khach");
+                boolean gender = resultSet.getBoolean("gioi_tinh");
+               customerList.add(new Customer(customerName, birthDay, idCard, phone, email, address, customerCode, customerTypeCode, gender));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return customerList;
     }
 
     @Override

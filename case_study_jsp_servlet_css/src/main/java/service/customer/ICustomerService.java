@@ -16,4 +16,6 @@ public interface ICustomerService {
     Customer findById(int id);
 
     List<CustomerType> showCustomerType();
+
+    List<Customer> findByNameAndCode(String name, String code);
 }

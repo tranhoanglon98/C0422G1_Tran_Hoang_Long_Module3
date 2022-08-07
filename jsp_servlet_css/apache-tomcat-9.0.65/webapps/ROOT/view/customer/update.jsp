@@ -13,16 +13,15 @@
     <link rel="stylesheet" href="/bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
-    <link href='https://fonts.googleapis.com/css?family=Bad Script' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/121b5e5230.js" crossorigin="anonymous"></script>
 </head>
-<body style="font-family: Bad Script,serif;background: #E0FFFF">
+<body style="font-family: Courgette,serif;background: #E0FFFF">
 <div class="container-fluid position-relative">
     <div class="row">
         <div class="col-lg-10 d-flex pt-2 justify-content-center  position-absolute" style="top: 7%">
             <div class="row" style="width: 95%">
                 <div class="col-lg-12 text-center"><h2>Update Customer</h2></div>
-                <div class="col-lg-12 fw-bold text-dark">
+                <div class="col-lg-12 text-dark">
                     <form action="/customer" method="post">
                         <div class="row">
                             <div class="col-lg-6 ps-5 pe-5">
@@ -90,12 +89,16 @@
                                         </c:forEach>
                                     </select>
                                 </div>
-
                                 <div class="row pb-4">
                                     <span>Address</span>
                                     <input type="text" name="address" value="${customer.address}" class="form-control"
                                            placeholder="Address"
                                            aria-label="Address">
+                                </div>
+                                <div class="row">
+                                    <button type="button" class="btn btn-dark">
+                                        <a href="/customer" class=" text-warning text-decoration-none">Back</a>
+                                    </button>
                                 </div>
                                 <input type="hidden" name="customerCode" value="${customer.customerCode}">
                             </div>
@@ -109,7 +112,7 @@
                  src="https://www.ibtmamericas.com/content/dam/sitebuilder/rxmx/ibtm-americas/2022/back-viajesbtc.jpg/_jcr_content/renditions/original.image_file.1279.640.file/back-viajesbtc.jpg"
                  alt="">
         </div>
-        <%@include file="/view/service/nav.jsp" %>
+        <%@include file="/view/facility/nav.jsp" %>
     </div>
 </div>
 <script>

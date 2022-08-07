@@ -17,7 +17,7 @@
 </head>
 <body style="font-family: Bad Script,serif ;background: #E0FFFF">
 <div class="container-fluid">
-    <%@include file="view/service/nav.jsp" %>
+    <%@include file="view/facility/nav.jsp" %>
     <div class="col-lg-10">
         <div class="row">
             <div class="col-lg-12 pt-4 pb-4 d-flex justify-content-center">
