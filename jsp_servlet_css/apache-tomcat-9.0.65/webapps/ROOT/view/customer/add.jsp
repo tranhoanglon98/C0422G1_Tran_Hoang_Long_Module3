@@ -26,26 +26,26 @@
                     <div class="row">
                         <div class="col-lg-6 ps-5 pe-5">
                             <div class="row pb-4">
-                                <span>Name:</span>
+                                <span>Name: </span><span class="text-danger">${nameErr}</span>
                                 <input type="text" name="name" class="form-control" placeholder="Customer name"
-                                       aria-label="Customer name">
+                                       aria-label="Customer name" value="${customer.name}">
                             </div>
                             <div class="row pb-4">
-                                <span>Birthday:</span>
+                                <span>Birthday: </span><span class="text-danger">${birthdayErr}</span>
                                 <input type="date" name="birthday" class="form-control" placeholder="Birthday"
-                                       aria-label="Birthday">
+                                       aria-label="Birthday" value="${customer.birthDay}">
                             </div>
                             <div class="row pb-4">
-                                <span>Gender:</span>
+                                <span>Gender: </span>
                                 <select name="gender" class="form-control">
                                     <option value="true">Nam</option>
                                     <option value="false">Nữ</option>
                                 </select>
                             </div>
                             <div class="row pb-4">
-                                <span>ID card</span>
+                                <span>ID card: </span><span class="text-danger">${idErr}</span>
                                 <input type="number" name="idCard" class="form-control"
-                                       placeholder="ID card" aria-label="ID card">
+                                       placeholder="ID card" aria-label="ID card" value="${customer.idCard}">
                             </div>
                             <div class="row">
                                 <button type="submit" name="action" value="add" class="btn btn-dark text-warning">Add</button>
@@ -53,15 +53,14 @@
                         </div>
                         <div class="col-lg-6 ps-5 pe-5">
                             <div class="row pb-4">
-                                <span>Phone</span>
+                                <span>Phone: </span><span class="text-danger">${phoneErr}</span>
                                 <input type="number" name="phone" class="form-control" placeholder="Phone"
-                                       aria-label="Phone">
+                                       aria-label="Phone" value="${customer.phone}">
                             </div>
                             <div class="row pb-4">
-                                <span>Email</span>
+                                <span>Email: </span><span class="text-danger">${emailErr}</span>
                                 <input type="email" name="email" class="form-control"
-                                       placeholder="Email"
-                                       aria-label="Email">
+                                       placeholder="Email" value="${customer.email}" aria-label="Email">
                             </div>
                             <div class="row pb-4">
                                 <span>Customer type</span>

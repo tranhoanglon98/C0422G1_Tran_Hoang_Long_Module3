@@ -147,11 +147,21 @@ public class CustomerServlet extends HttpServlet {
         String address = request.getParameter("address");
         Customer newCustomer = new Customer(name,birthDay,idCard,phone,email,address,customerType,gender);
         Map<String, String> errMap =  customerService.add(newCustomer);
-
-        if (email.isEmpty()){
+        request.setAttribute("customer",newCustomer);
+        request.setAttribute("customerTypeList",customerService.showCustomerType());
+        if (errMap.isEmpty()){
             showHomePage(request,response);
+        }else {
+            for (Map.Entry<String,String> entry: errMap.entrySet()){
+                request.setAttribute(entry.getKey(),entry.getValue());
+            }
+            try {
+                request.getRequestDispatcher("view/customer/add.jsp").forward(request,response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-
-
     }
 }

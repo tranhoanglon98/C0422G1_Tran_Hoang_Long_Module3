@@ -46,7 +46,7 @@ public class CustomerService implements ICustomerService {
         }
 
         if (!customer.getEmail().isEmpty()){
-            if (!customer.getEmail().matches("[a-z]+@[a-z]+\\.[a-z]+")){
+            if (!customer.getEmail().matches("[a-z0-9]+@[a-z0-9]+\\.[a-z]+")){
                 errMap.put("emailErr","Please input right format!");
             }
         }else {
