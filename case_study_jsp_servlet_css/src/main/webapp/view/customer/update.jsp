@@ -26,19 +26,19 @@
                         <div class="row">
                             <div class="col-lg-6 ps-5 pe-5">
                                 <div class="row pb-4">
-                                    <span>Name:</span>
+                                    <span>Name: </span><span class="text-danger">${nameErr}</span>
                                     <input type="text" value="${customer.name}" name="name" class="form-control"
                                            placeholder="Customer name"
                                            aria-label="Customer name">
                                 </div>
                                 <div class="row pb-4">
-                                    <span>Birthday:</span>
+                                    <span>Birthday: </span><span class="text-danger">${birthdayErr}</span>
                                     <input type="date" value="${customer.birthDay}" name="birthday" class="form-control"
                                            placeholder="Birthday"
                                            aria-label="Birthday">
                                 </div>
                                 <div class="row pb-4">
-                                    <span>Gender:</span>
+                                    <span>Gender: </span>
                                     <select name="gender" class="form-control">
                                         <c:if test="${customer.gender == true}">
                                             <option value="true">Nam</option>
@@ -51,7 +51,7 @@
                                     </select>
                                 </div>
                                 <div class="row pb-4">
-                                    <span>ID card</span>
+                                    <span>ID card: </span><span class="text-danger">${idErr}</span>
                                     <input type="number" value="${customer.idCard}" name="idCard" class="form-control"
                                            placeholder="ID card" aria-label="ID card">
                                 </div>
@@ -63,13 +63,13 @@
                             </div>
                             <div class="col-lg-6 ps-5 pe-5">
                                 <div class="row pb-4">
-                                    <span>Phone</span>
+                                    <span>Phone</span><span class="text-danger">${phoneErr}</span>
                                     <input type="number" name="phone" value="${customer.phone}" class="form-control"
                                            placeholder="Phone"
                                            aria-label="Phone">
                                 </div>
                                 <div class="row pb-4">
-                                    <span>Email</span>
+                                    <span>Email</span><span class="text-danger">${emailErr}</span>
                                     <input type="email" name="email" value="${customer.email}" class="form-control"
                                            placeholder="Email"
                                            aria-label="Email">

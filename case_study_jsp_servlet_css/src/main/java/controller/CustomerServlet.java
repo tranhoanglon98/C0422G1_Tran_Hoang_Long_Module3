@@ -132,8 +132,25 @@ public class CustomerServlet extends HttpServlet {
         int customerType = Integer.parseInt(request.getParameter("customerType"));
         String address = request.getParameter("address");
         Customer customer = new Customer(name,birthDay,idCard,phone,email,address,customerCode,customerType,gender);
-        customerService.update(customer);
-        showHomePage(request,response);
+        Map<String, String> errMap = customerService.update(customer);
+        List<CustomerType> customerTypeList = customerService.showCustomerType();
+        request.setAttribute("customer",customer);
+        request.setAttribute("customerTypeList",customerTypeList);
+        if (errMap.isEmpty()){
+            showHomePage(request,response);
+        }else {
+            for (Map.Entry<String,String> entry: errMap.entrySet()){
+                request.setAttribute(entry.getKey(),entry.getValue());
+            }
+        }
+        try {
+            request.getRequestDispatcher("view/customer/update.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void addNewCustomer(HttpServletRequest request, HttpServletResponse response) {

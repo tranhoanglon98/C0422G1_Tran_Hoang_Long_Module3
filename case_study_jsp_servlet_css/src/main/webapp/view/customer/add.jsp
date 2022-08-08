@@ -74,7 +74,7 @@
                                 <span>Address</span>
                                 <input type="text" name="address" class="form-control"
                                        placeholder="Address"
-                                       aria-label="Address">
+                                       aria-label="Address" value="${customer.address}">
                             </div>
                         </div>
                     </div>

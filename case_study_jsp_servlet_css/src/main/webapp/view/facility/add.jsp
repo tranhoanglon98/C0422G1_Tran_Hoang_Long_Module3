@@ -49,24 +49,24 @@
                             <div class="row">
                                 <div class="col-lg-6 ps-5 pe-5">
                                     <div class="row pb-4">
-                                        <span>Name:</span>
+                                        <span>Name:</span><span class="text-danger">${nameErr}</span>
                                         <input type="text" name="name" class="form-control" placeholder="Service name"
-                                               aria-label="Service name">
+                                               aria-label="Service name" value="${facility.name}">
                                     </div>
                                     <div class="row pb-4">
-                                        <span>Area:</span>
+                                        <span>Area:</span><span class="text-danger">${areaErr}</span>
                                         <input type="number" name="area" class="form-control" placeholder="Area"
-                                               aria-label="Area">
+                                               aria-label="Area" value="${facility.area}">
                                     </div>
                                     <div class="row pb-4">
-                                        <span>Cost:</span>
+                                        <span>Cost:</span><span class="text-danger">${costErr}</span>
                                         <input type="number" name="cost" class="form-control" placeholder="Cost"
-                                               aria-label="Cost">
+                                               aria-label="Cost" value="${facility.cost}">
                                     </div>
                                     <div class="row pb-4">
-                                        <span>Max people</span>
+                                        <span>Max people</span><span class="text-danger">${maxPeopleErr}</span>
                                         <input type="number" name="people" class="form-control" placeholder="Max people"
-                                               aria-label="Max people">
+                                               aria-label="Max people" value="${facility.maxPeople}">
                                     </div>
                                     <div class="row pb-4">
                                         <span>Rental type</span>
@@ -94,9 +94,9 @@
                                                aria-label="Other convenience">
                                     </div>
                                     <div class="row pb-4" style="display: none" id="floors">
-                                        <span>Number of floors</span>
+                                        <span>Number of floors</span><span class="text-danger">${floorErr}</span>
                                         <input id="floorsInput" type="number" name="floors" class="form-control"
-                                              placeholder="Number of floors" aria-label="Number of floor">
+                                              placeholder="Number of floors" aria-label="Number of floor" value="${facility.floors}">
                                     </div>
                                     <div class="row pb-4" style="display: block" id="free">
                                         <span>Facility free</span>
@@ -105,9 +105,9 @@
                                                aria-label="Facility free">
                                     </div>
                                     <div class="row pb-4" style="display: none" id="poolArea">
-                                        <span>Pool area:</span>
+                                        <span>Pool area:</span><span class="text-danger">${poolErr}</span>
                                         <input id="poolAreaInput" type="number" name="Pool" class="form-control"
-                                               placeholder="Pool area" aria-label="Pool area">
+                                               placeholder="Pool area" aria-label="Pool area" value="${facility.poolArea}">
                                     </div>
                                 </div>
                             </div>

@@ -20,47 +20,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Map<String, String> add(Customer customer) {
-        Map<String,String> errMap = new HashMap<>();
-        if (!customer.getName().isEmpty()){
-            if (!customer.getName().matches("[A-Z][a-z]+( [A-Z][a-z]+)*")){
-                errMap.put("nameErr","Please input right format!");
-            }
-        }else {
-            errMap.put("nameErr","Please input name");
-        }
-
-        if (!customer.getIdCard().isEmpty()){
-            if (!customer.getIdCard().matches("[0-9]{9}|[0-9]{12}")){
-                errMap.put("idErr","Please input right format!");
-            }
-        }else {
-            errMap.put("idErr","please input idCard");
-        }
-
-        if (!customer.getPhone().isEmpty()){
-            if (!customer.getPhone().matches("((090)|(091)|(\\(84\\)+90)|(\\(84\\)+91))[0-9]{7}")){
-                errMap.put("phoneErr","Please input right format!");
-            }
-        }else {
-            errMap.put("phoneErr","please input phone");
-        }
-
-        if (!customer.getEmail().isEmpty()){
-            if (!customer.getEmail().matches("[a-z0-9]+@[a-z0-9]+\\.[a-z]+")){
-                errMap.put("emailErr","Please input right format!");
-            }
-        }else {
-            errMap.put("emailErr","please input email");
-        }
-
-        if ((!customer.getBirthDay().isEmpty())){
-            if ((customer.getBirthDay()).matches("[0-9]{2}/[0-9]{2}/[0-9]{4}")){
-                errMap.put("birthdayErr","Please input right format!");
-            }
-        }else {
-            errMap.put("birthdayErr","please input birthday");
-        }
-
+        Map<String,String> errMap = this.validate(customer);
         if (errMap.isEmpty()){
             customerRepository.add(customer);
         }
@@ -74,8 +34,14 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void update(Customer customer) {
-        customerRepository.update(customer);
+    public Map<String, String> update(Customer customer) {
+        Map<String,String> errMap = this.validate(customer);
+
+        if (errMap.isEmpty()){
+            customerRepository.update(customer);
+        }
+
+        return errMap;
     }
 
     @Override
@@ -93,5 +59,50 @@ public class CustomerService implements ICustomerService {
         return customerRepository.findByNameAndCode(name,code);
     }
 
+
+    public Map<String, String> validate(Customer customer){
+        Map<String,String> errMap = new HashMap<>();
+        if (!customer.getName().isEmpty()){
+            if (!customer.getName().matches("^([A-Z][a-z])+( [A-Z][a-z]+)*$")){
+                errMap.put("nameErr","Please input right format!");
+            }
+        }else {
+            errMap.put("nameErr","Please input name");
+        }
+
+        if (!customer.getIdCard().isEmpty()){
+            if (!customer.getIdCard().matches("^[0-9]{9}|[0-9]{12}$")){
+                errMap.put("idErr","Please input right format!");
+            }
+        }else {
+            errMap.put("idErr","please input idCard");
+        }
+
+        if (!customer.getPhone().isEmpty()){
+            if (!customer.getPhone().matches("^((090)|(091)|(\\(84\\)+90)|(\\(84\\)+91))[0-9]{7}$")){
+                errMap.put("phoneErr","Please input right format!");
+            }
+        }else {
+            errMap.put("phoneErr","please input phone");
+        }
+
+        if (!customer.getEmail().isEmpty()){
+            if (!customer.getEmail().matches("^[a-z0-9]+@[a-z0-9]+\\.[a-z]+$")){
+                errMap.put("emailErr","Please input right format!");
+            }
+        }else {
+            errMap.put("emailErr","please input email");
+        }
+
+        if ((!customer.getBirthDay().isEmpty())){
+            if ((customer.getBirthDay()).matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}$")){
+                errMap.put("birthdayErr","Please input right format!");
+            }
+        }else {
+            errMap.put("birthdayErr","please input birthday");
+        }
+
+        return errMap;
+    }
 
 }

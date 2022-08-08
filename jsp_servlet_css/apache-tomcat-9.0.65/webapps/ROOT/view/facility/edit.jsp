@@ -29,22 +29,22 @@
                         <div class="row">
                             <div class="col-lg-6 ps-5 pe-5">
                                 <div class="row pb-4">
-                                    <span>Name:</span>
+                                    <span>Name:</span><span class="text-danger">${nameErr}</span>
                                     <input type="text" name="name" value="${facility.name}" class="form-control" placeholder="Service name"
                                            aria-label="Service name">
                                 </div>
                                 <div class="row pb-4">
-                                    <span>Area:</span>
+                                    <span>Area:</span><span class="text-danger">${areaErr}</span>
                                     <input type="number" name="area" value="${facility.area}" class="form-control" placeholder="Area"
                                            aria-label="Area">
                                 </div>
                                 <div class="row pb-4">
-                                    <span>Cost:</span>
+                                    <span>Cost:</span><span class="text-danger">${costErr}</span>
                                     <input type="number" name="cost" value="${facility.cost}" class="form-control" placeholder="Cost"
                                            aria-label="Cost">
                                 </div>
                                 <div class="row pb-4">
-                                    <span>Max people</span>
+                                    <span>Max people</span><span class="text-danger">${maxPeopleErr}</span>
                                     <input type="number" name="people" value="${facility.maxPeople}" class="form-control" placeholder="Max people"
                                            aria-label="Max people">
                                 </div>
@@ -79,7 +79,7 @@
                                            aria-label="Other convenience">
                                 </div>
                                 <div class="row pb-4" style="display: none" id="floors">
-                                    <span>Number of floors</span>
+                                    <span>Number of floors</span><span class="text-danger">${floorErr}</span>
                                     <input type="number" name="floors" value="${facility.floors}" class="form-control"
                                            aria-label="floor">
                                 </div>
@@ -89,7 +89,7 @@
                                            aria-label="Facility free" value="${facility.facilityFree}">
                                 </div>
                                 <div class="row pb-4" style="display: none" id="pool_area">
-                                    <span>Pool area:</span>
+                                    <span>Pool area:</span><span class="text-danger">${poolErr}</span>
                                     <input type="number" name="Pool" class="form-control"
                                            value="${facility.poolArea}"
                                            aria-label="Pool">

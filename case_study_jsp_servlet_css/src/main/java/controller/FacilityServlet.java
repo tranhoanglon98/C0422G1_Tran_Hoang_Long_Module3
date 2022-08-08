@@ -11,6 +11,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "FacilityServlet", value = "/facility")
 public class FacilityServlet extends HttpServlet {
@@ -38,6 +39,23 @@ public class FacilityServlet extends HttpServlet {
                 break;
             default:
                 showHomePage(request,response);
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        String action = request.getParameter("action");
+        if (action==null){
+            action = "";
+        }
+        switch (action){
+            case "add":
+                addNewFacility(request,response);
+                break;
+            case "update":
+                updateFacility(request,response);
+                break;
         }
     }
 
@@ -108,23 +126,6 @@ public class FacilityServlet extends HttpServlet {
         }
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        String action = request.getParameter("action");
-        if (action==null){
-            action = "";
-        }
-        switch (action){
-            case "add":
-                addNewFacility(request,response);
-                break;
-            case "update":
-                updateFacility(request,response);
-                break;
-        }
-    }
-
     private void updateFacility(HttpServletRequest request, HttpServletResponse response) {
         int facilityCode = Integer.parseInt(request.getParameter("facilityCode"));
         String name = request.getParameter("name");
@@ -139,8 +140,26 @@ public class FacilityServlet extends HttpServlet {
         String facilityFree = request.getParameter("free");
         double poolArea = Double.parseDouble(request.getParameter("Pool"));
         Facility facility = new Facility(facilityCode,name,area,cost,maxPeople,rentalTypeId,typeId,standard,convenience,poolArea,floors,facilityFree);
-        facilityService.updateFacility(facility);
-        showHomePage(request,response);
+
+        List<RentType> rentTypeList = facilityService.showRentType();
+        List<FacilityType> facilityTypeList = facilityService.showFacilityType();
+        request.setAttribute("rentTypeList",rentTypeList);
+        request.setAttribute("facilityTypeList",facilityTypeList);
+        request.setAttribute("facility",facility);
+
+        Map<String,String> errMap = facilityService.updateFacility(facility);
+
+        if (errMap.isEmpty()){
+            showHomePage(request,response);
+        }else {
+            try {
+                request.getRequestDispatcher("view/facility/edit.jsp").forward(request,response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void addNewFacility(HttpServletRequest request, HttpServletResponse response) {
@@ -155,8 +174,27 @@ public class FacilityServlet extends HttpServlet {
         int floors = Integer.parseInt(request.getParameter("floors"));
         String facilityFree = request.getParameter("free");
         double poolArea = Double.parseDouble(request.getParameter("Pool"));
+
         Facility facility = new Facility(name,area,cost,maxPeople,rentalTypeId,typeId,standard,convenience,poolArea,floors,facilityFree);
-        facilityService.addNewFacility(facility);
-        showHomePage(request,response);
+
+        List<RentType> rentTypeList = facilityService.showRentType();
+        List<FacilityType> facilityTypeList = facilityService.showFacilityType();
+        request.setAttribute("rentTypeList",rentTypeList);
+        request.setAttribute("facilityTypeList",facilityTypeList);
+        request.setAttribute("facility",facility);
+
+        Map<String,String> errMap = facilityService.addNewFacility(facility);
+
+        if (errMap.isEmpty()){
+            showHomePage(request,response);
+        }else {
+            try {
+                request.getRequestDispatcher("view/facility/add.jsp").forward(request,response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

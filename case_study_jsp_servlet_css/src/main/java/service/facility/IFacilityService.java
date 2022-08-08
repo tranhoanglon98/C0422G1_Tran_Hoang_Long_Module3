@@ -5,13 +5,14 @@ import model.facility.FacilityType;
 import model.facility.RentType;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IFacilityService {
     List<Facility> findAll();
 
-    void addNewFacility(Facility facility);
+    Map<String, String> addNewFacility(Facility facility);
 
-    void updateFacility(Facility facility);
+    Map<String, String> updateFacility(Facility facility);
 
     void deleteFacility(int id);
 

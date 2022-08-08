@@ -13,7 +13,7 @@ public interface ICustomerService {
 
     void delete(int id);
 
-    void update(Customer customer);
+    Map<String, String> update(Customer customer);
 
     Customer findById(int id);
 
