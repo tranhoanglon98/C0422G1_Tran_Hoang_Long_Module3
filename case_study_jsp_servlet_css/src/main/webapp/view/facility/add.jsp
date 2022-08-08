@@ -26,6 +26,7 @@
                     <form class="row" action="/facility" method="post">
                         <div class="col-lg-2 ps-5">
                             <div class="form-check" onclick="showInput(roomInput.value)">
+                                <input type="hidden" value="${facility.facilityTypeId}" id="onload">
                                 <input class="form-check-input" type="radio" value="3" name="id" id="roomInput"
                                        checked>
                                 <label class="form-check-label" for="roomInput">
@@ -125,6 +126,8 @@
     </div>
 </div>
 <script>
+    let code = document.getElementById("onload").value;
+    window.onload = showInput(code);
     function showInput(value) {
         console.log(value)
         switch (value) {

@@ -146,8 +146,10 @@ public class FacilityServlet extends HttpServlet {
         request.setAttribute("rentTypeList",rentTypeList);
         request.setAttribute("facilityTypeList",facilityTypeList);
         request.setAttribute("facility",facility);
-
         Map<String,String> errMap = facilityService.updateFacility(facility);
+        for (Map.Entry<String,String> entry: errMap.entrySet()){
+            request.setAttribute(entry.getKey(),entry.getValue());
+        }
 
         if (errMap.isEmpty()){
             showHomePage(request,response);
@@ -184,6 +186,9 @@ public class FacilityServlet extends HttpServlet {
         request.setAttribute("facility",facility);
 
         Map<String,String> errMap = facilityService.addNewFacility(facility);
+        for (Map.Entry<String,String> entry: errMap.entrySet()){
+            request.setAttribute(entry.getKey(),entry.getValue());
+        }
 
         if (errMap.isEmpty()){
             showHomePage(request,response);

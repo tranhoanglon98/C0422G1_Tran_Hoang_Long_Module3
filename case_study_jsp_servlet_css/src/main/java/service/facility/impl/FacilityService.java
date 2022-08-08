@@ -78,16 +78,16 @@ public class FacilityService implements IFacilityService {
             errMap.put("poolErr","Pool area cannot be negative");
         }
 
-        if (facility.getFloors()<0||facility.getFloors()%1 != 0){
+        if (facility.getFloors()<0 || (Math.floor(facility.getFloors()) !=  Math.ceil(facility.getFloors()))){
             errMap.put("floorErr","Number of floors must be an integer");
         }
 
-        if (facility.getMaxPeople()<0 || facility.getMaxPeople()%1 != 0){
-            errMap.put("maxPeople","Max people must be an integer");
+        if (facility.getMaxPeople()<0 || (Math.floor(facility.getMaxPeople()) !=  Math.ceil(facility.getMaxPeople()))){
+            errMap.put("maxPeopleErr","Max people must be an integer");
         }
 
         if (!facility.getName().isEmpty()){
-            if (!facility.getName().matches("(^[A-Z][a-z0-9]+)( [A-Z][a-z0-9]+)*$")){
+            if (!facility.getName().matches("(^[A-Z0-9][a-z0-9]+)( [A-Z0-9][a-z0-9]+)*$")){
                 errMap.put("nameErr","Please input right format");
             }
         }else {
