@@ -17,6 +17,7 @@ public class FacilityRepository implements IFacilityRepository {
     private String ADD_NEW_FACILITY = "call add_facility(?,?,?,?,?,?,?,?,?,?,?);";
     private String DELETE_FACILITY = "delete from dich_vu where ma_dich_vu = ?;";
     private String FIND_BY_ID = "select * from dich_vu where ma_dich_vu = ?;";
+    private String FIND_BY_NAME_AND_ID = "select * from dich_vu where ma_dich_vu like ? and ten_dich_vu like ?;";
     private String UPDATE_FACILITY = "call update_facility(?,?,?,?,?,?,?,?,?,?,?,?);";
 
 
@@ -173,7 +174,33 @@ public class FacilityRepository implements IFacilityRepository {
     }
 
     @Override
-    public List<Facility> findByNameAndId() {
-        return null;
+    public List<Facility> findByNameAndId(String id, String name) {
+        List<Facility> facilityList = new LinkedList<>();
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_NAME_AND_ID);
+            preparedStatement.setString(1,"%"+id+"%");
+            preparedStatement.setString(2,"%"+name+"%");
+           ResultSet resultSet = preparedStatement.executeQuery();
+           while (resultSet.next()){
+               int facilityCode = resultSet.getInt("ma_dich_vu");
+               String facilityName = resultSet.getString("ten_dich_vu");
+               int area = resultSet.getInt("dien_tich");
+               double cost = resultSet.getDouble("chi_phi_thue");
+               int maxPeople = resultSet.getInt("so_nguoi_toi_da");
+               int rentTypeId = resultSet.getInt("ma_kieu_thue");
+               int facilityTypeCode = resultSet.getInt("ma_loai_dich_vu");
+               String roomStandard = resultSet.getString("tieu_chuan_phong");
+               String otherConvenience = resultSet.getString("mo_ta_tien_nghi_khac");
+               double poolArea = resultSet.getDouble("dien_tich_ho_boi");
+               int floors = resultSet.getInt("so_tang");
+               String facilityFree = resultSet.getString("dich_vu_mien_phi_di_kem");
+               facilityList.add(new Facility(facilityCode,facilityName,area,cost,maxPeople,rentTypeId,facilityTypeCode,roomStandard,otherConvenience,poolArea,floors,facilityFree));
+           }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return facilityList;
     }
+
 }

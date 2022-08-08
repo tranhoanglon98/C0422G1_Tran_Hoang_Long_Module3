@@ -33,8 +33,29 @@ public class FacilityServlet extends HttpServlet {
             case "edit":
                 showEditPage(request,response);
                 break;
+            case "find":
+                findByNameAndId(request,response);
+                break;
             default:
                 showHomePage(request,response);
+        }
+    }
+
+    private void findByNameAndId(HttpServletRequest request, HttpServletResponse response) {
+        String id = request.getParameter("facilityCode");
+        String name = request.getParameter("facilityName");
+        List<FacilityType> facilityTypeList = facilityService.showFacilityType();
+        List<RentType> rentTypeList = facilityService.showRentType();
+        List<Facility> facilityList = facilityService.findByNameAndId(id,name);
+        request.setAttribute("facilityList",facilityList);
+        request.setAttribute("rentTypeList",rentTypeList);
+        request.setAttribute("facilityTypeList",facilityTypeList);
+        try {
+            request.getRequestDispatcher("view/facility/list.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

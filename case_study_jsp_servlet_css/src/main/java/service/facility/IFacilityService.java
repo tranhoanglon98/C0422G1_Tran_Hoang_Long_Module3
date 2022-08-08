@@ -20,4 +20,6 @@ public interface IFacilityService {
     List<FacilityType> showFacilityType();
 
     List<RentType> showRentType();
+
+    List<Facility> findByNameAndId(String id,String name);
 }

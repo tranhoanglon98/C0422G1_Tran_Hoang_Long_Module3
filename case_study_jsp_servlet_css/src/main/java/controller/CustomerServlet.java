@@ -9,7 +9,9 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "CustomerServlet", value = "/customer")
 public class CustomerServlet extends HttpServlet {
@@ -34,6 +36,27 @@ public class CustomerServlet extends HttpServlet {
                 break;
             default:
                 showHomePage(request,response);
+        }
+    }
+
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        String action = request.getParameter("action");
+        if (action==null){
+            action = "";
+        }
+        switch (action){
+            case "add":
+                addNewCustomer(request,response);
+                break;
+            case "update":
+                updateCustomer(request,response);
+                break;
+            case "delete":
+                deleteCustomer(request,response);
+                break;
         }
     }
 
@@ -92,26 +115,6 @@ public class CustomerServlet extends HttpServlet {
         }
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        String action = request.getParameter("action");
-        if (action==null){
-            action = "";
-        }
-        switch (action){
-            case "add":
-                addNewCustomer(request,response);
-                break;
-            case "update":
-                updateCustomer(request,response);
-                break;
-            case "delete":
-                deleteCustomer(request,response);
-                break;
-        }
-    }
-
     private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) {
         int customerCode = Integer.parseInt(request.getParameter("customerCode"));
         customerService.delete(customerCode);
@@ -143,7 +146,12 @@ public class CustomerServlet extends HttpServlet {
         int customerType = Integer.parseInt(request.getParameter("customerType"));
         String address = request.getParameter("address");
         Customer newCustomer = new Customer(name,birthDay,idCard,phone,email,address,customerType,gender);
-        customerService.add(newCustomer);
-        showHomePage(request,response);
+        Map<String, String> errMap =  customerService.add(newCustomer);
+
+        if (email.isEmpty()){
+            showHomePage(request,response);
+        }
+
+
     }
 }

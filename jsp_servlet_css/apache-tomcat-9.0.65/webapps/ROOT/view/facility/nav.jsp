@@ -25,7 +25,7 @@
             <td><a class="nav-link text-dark" href="/furama?action=customer"><h4>Customer</h4></a></td>
         </tr>
         <tr>
-            <td><a class="nav-link text-dark" href="/facility"><h3>Service</h3></a></td>
+            <td><a class="nav-link text-dark" href="/furama?action=facility"><h3>Service</h3></a></td>
         </tr>
         <tr>
             <td><a class="nav-link text-dark" href="/furama?action=contract"><h3>Contract</h3></a></td>

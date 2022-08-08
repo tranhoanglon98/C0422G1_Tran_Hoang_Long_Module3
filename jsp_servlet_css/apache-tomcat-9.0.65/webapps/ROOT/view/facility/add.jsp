@@ -81,33 +81,33 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 ps-5 pe-5">
-                                    <div class="row pb-4" style="display: none" id="standard">
+                                    <div  class="row pb-4" style="display: none" id="standard">
                                         <span>Room standard</span>
-                                        <input type="text" name="standard" class="form-control"
+                                        <input id="standardInput" type="text" name="standard" class="form-control"
                                                placeholder="Room standard"
                                                aria-label="Room standard">
                                     </div>
                                     <div class="row pb-4" style="display: none" id="convenience">
                                         <span>Other convenience</span>
-                                        <input type="text" name="convenience" class="form-control"
+                                        <input id="convenienceInput" type="text" name="convenience" class="form-control"
                                                placeholder="Other convenience"
                                                aria-label="Other convenience">
                                     </div>
                                     <div class="row pb-4" style="display: none" id="floors">
                                         <span>Number of floors</span>
-                                        <input type="number" name="floors" value="0" class="form-control"
-                                               aria-label="Number of floor">
+                                        <input id="floorsInput" type="number" name="floors" class="form-control"
+                                              placeholder="Number of floors" aria-label="Number of floor">
                                     </div>
                                     <div class="row pb-4" style="display: block" id="free">
                                         <span>Facility free</span>
-                                        <input type="text" name="free" class="form-control"
+                                        <input id="freeInput" type="text" name="free" class="form-control"
                                                placeholder="Facility free"
                                                aria-label="Facility free">
                                     </div>
-                                    <div class="row pb-4" style="display: none" id="pool_area">
+                                    <div class="row pb-4" style="display: none" id="poolArea">
                                         <span>Pool area:</span>
-                                        <input type="number" name="Pool" class="form-control"
-                                               value="0" aria-label="Pool area">
+                                        <input id="poolAreaInput" type="number" name="Pool" class="form-control"
+                                               placeholder="Pool area" aria-label="Pool area">
                                     </div>
                                 </div>
                             </div>
@@ -134,25 +134,29 @@
                 document.getElementById("floors").style.display = "block";
                 document.getElementById("convenience").style.display = "block";
                 document.getElementById("free").style.display = "none";
-                document.getElementById("pool_area").style.display = "none";
+                document.getElementById("poolArea").style.display = "none";
+                document.getElementById("poolAreaInput").value = "0";
+                document.getElementById("freeInput").value = "";
                 break;
-
             case "1":
                 document.getElementById("standard").style.display = "block";
                 document.getElementById("floors").style.display = "block";
                 document.getElementById("convenience").style.display = "block";
                 document.getElementById("free").style.display = "none";
-                document.getElementById("pool_area").style.display = "block";
+                document.getElementById("poolArea").style.display = "block";
+                document.getElementById("freeInput").value = "";
                 break;
-
             case "3":
                 document.getElementById("standard").style.display = "none";
                 document.getElementById("floors").style.display = "none";
                 document.getElementById("convenience").style.display = "none";
                 document.getElementById("free").style.display = "block";
-                document.getElementById("convenience").style.display = "none";
+                document.getElementById("poolArea").style.display = "none";
+                document.getElementById("standardInput").value = "";
+                document.getElementById("floorsInput").value = "0";
+                document.getElementById("convenienceInput").value = "";
+                document.getElementById("poolAreaInput").value = "0";
                 break;
-
         }
     }
 </script>

@@ -1,6 +1,6 @@
 USE  furama_resort;
 
-select * from khach_hang;
+select * from dich_vu;
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS add_new_customer $$
@@ -42,15 +42,28 @@ DELIMITER ;
 
 
 DELIMITER $$
-DROP PROCEDURE IF EXISTS delete_customer $$
-CREATE PROCEDURE delete_customer
-	(in ma_khach_hang_xoa int)
+DROP PROCEDURE IF EXISTS update_facility $$
+CREATE PROCEDURE update_facility
+	(in `name` varchar(55), dien_tich_moi int, gia double, nguoi int, phong varchar(55), tien_nghi varchar(55), ho_boi double,tang int, mien_phi varchar(100), kieu_thue int, loai_dich_vu int,id int)
 BEGIN
-   delete from khach_hang where ma_khach_hang = ma_khach_hang_xoa;
+   update dich_vu set ten_dich_vu= `name`, dien_tich = dien_tich_moi, chi_phi_thue = gia,so_nguoi_toi_da= nguoi,
+   tieu_chuan_phong = phong,mo_ta_tien_nghi_khac = tien_nghi,dien_tich_ho_boi=ho_boi,so_tang=tang,
+   dich_vu_mien_phi_di_kem=mien_phi,ma_kieu_thue = kieu_thue,ma_loai_dich_vu = loai_dich_vu where ma_dich_vu = id;
 END $$
 DELIMITER ;
 
-call delete_customer (1);
+call add_facility(?,?,?,?,?,?,?,?,?,?,?,?);
+
+
+
+
+
+
+
+
+
+
+
 
 
 

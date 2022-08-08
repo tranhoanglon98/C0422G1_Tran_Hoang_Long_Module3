@@ -21,5 +21,6 @@ public interface IFacilityRepository {
 
     List<RentType> showRentType();
 
-    List<Facility> findByNameAndId();
+    List<Facility> findByNameAndId(String id,String name);
+
 }

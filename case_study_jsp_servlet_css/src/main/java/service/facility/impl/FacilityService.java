@@ -48,4 +48,9 @@ public class FacilityService implements IFacilityService {
         return facilityRepository.showRentType();
     }
 
+    @Override
+    public List<Facility> findByNameAndId(String id, String name) {
+        return facilityRepository.findByNameAndId(id,name);
+    }
+
 }

@@ -37,7 +37,7 @@
                             </a>
                         </div>
                         <div class="col-lg-9">
-                            <form action="/customer" method="get">
+                            <form action="/facility" method="get">
                                 <div class="row">
                                     <div class="col-lg-3"></div>
                                     <div class="col-lg-3">
@@ -47,7 +47,7 @@
                                         <input type="text" placeholder="facility Name" name="facilityName" class="form-control">
                                     </div>
                                     <div class="col-lg-3">
-                                        <button type="submit" name="action" value="findByName" class="btn btn-dark text-warning">search</button>
+                                        <button type="submit" name="action" value="find" class="btn btn-primary">search</button>
                                     </div>
                                 </div>
                             </form>
@@ -67,6 +67,7 @@
                                 <th>Pool area</th>
                                 <th>Floors</th>
                                 <th>Facility free</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -108,14 +109,14 @@
                                     </button>
                                 </td>
                             </tr>
-                            </tbody>
                             </c:forEach>
+                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-10 pt-3 pb-3 d-flex justify-content-center">
+        <div class="col-lg-10 pt-2 pb-2 d-flex justify-content-center">
             <img style="border-radius: 30px" width="93%"
                  src="https://s3.ap-southeast-2.amazonaws.com/travlr.com/uploads/images/venue/923e2231037b6ad79efbd200cf2a1d6e.jpg"
                  alt="">
@@ -159,17 +160,16 @@
 <script src="../../DataTables-1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="../../DataTables-1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script src=../../bootstrap-5.1.3-dist/js/bootstrap.min.js></script>
-
 <script>
     $(document).ready(function () {
         $('#list').dataTable({
-            "pagingType": "numbers",
             "dom": 'lrtip',
             "lengthChange": false,
-            "pageLength": 5
+            "pageLength": 3
         });
     });
-
+</script>
+<script>
     function getInfoToModal(code, name) {
         document.getElementById("code").value = code;
         document.getElementById("name").value = name;

@@ -187,7 +187,6 @@
 <script>
     $(document).ready(function () {
         $('#list').dataTable({
-            "pagingType": "numbers",
             "dom": 'lrtip',
             "lengthChange": false,
             "pageLength": 4

@@ -24,7 +24,7 @@ public class FuramaServlet extends HttpServlet {
                 showHomePage(request,response,"/employee");
                 break;
             case "facility":
-                showHomePage(request,response,"/facility");
+                showHomePage(request,response,"/facility");break;
             default:
                 showHomePage(request, response,"index.jsp");
         }
