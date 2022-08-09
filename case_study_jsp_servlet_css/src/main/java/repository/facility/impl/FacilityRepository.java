@@ -29,17 +29,17 @@ public class FacilityRepository implements IFacilityRepository {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
-                int id = resultSet.getInt("ma_dich_vu");
+                String id = resultSet.getString("ma_dich_vu");
                 String name = resultSet.getString("ten_dich_vu");
-                int area = resultSet.getInt("dien_tich");
-                double cost = resultSet.getDouble("chi_phi_thue");
-                int maxPeople = resultSet.getInt("so_nguoi_toi_da");
-                int rentTypeId = resultSet.getInt("ma_kieu_thue");
-                int facilityTypeCode = resultSet.getInt("ma_loai_dich_vu");
+                String area = resultSet.getString("dien_tich");
+                String cost = resultSet.getString("chi_phi_thue");
+                String maxPeople = resultSet.getString("so_nguoi_toi_da");
+                String rentTypeId = resultSet.getString("ma_kieu_thue");
+                String facilityTypeCode = resultSet.getString("ma_loai_dich_vu");
                 String roomStandard = resultSet.getString("tieu_chuan_phong");
                 String otherConvenience = resultSet.getString("mo_ta_tien_nghi_khac");
-                double poolArea = resultSet.getDouble("dien_tich_ho_boi");
-                int floors = resultSet.getInt("so_tang");
+                String poolArea = resultSet.getString("dien_tich_ho_boi");
+                String floors = resultSet.getString("so_tang");
                 String facilityFree = resultSet.getString("dich_vu_mien_phi_di_kem");
                 facilityList.add(new Facility(id,name,area,cost,maxPeople,rentTypeId,facilityTypeCode,roomStandard,
                         otherConvenience,poolArea,floors,facilityFree));
@@ -56,16 +56,16 @@ public class FacilityRepository implements IFacilityRepository {
         try {
             CallableStatement callableStatement = connection.prepareCall(ADD_NEW_FACILITY);
             callableStatement.setString(1,facility.getName());
-            callableStatement.setInt(2,facility.getArea());
-            callableStatement.setDouble(3,facility.getCost());
-            callableStatement.setInt(4,facility.getMaxPeople());
+            callableStatement.setInt(2, Integer.parseInt(facility.getArea()));
+            callableStatement.setDouble(3, Double.parseDouble(facility.getCost()));
+            callableStatement.setInt(4, Integer.parseInt(facility.getMaxPeople()));
             callableStatement.setString(5,facility.getStandard());
             callableStatement.setString(6,facility.getOtherConvenience());
-            callableStatement.setDouble(7,facility.getPoolArea());
-            callableStatement.setInt(8,facility.getFloors());
+            callableStatement.setDouble(7, Double.parseDouble(facility.getPoolArea()));
+            callableStatement.setInt(8, Integer.parseInt(facility.getFloors()));
             callableStatement.setString(9,facility.getFacilityFree());
-            callableStatement.setInt(10,facility.getRentTypeId());
-            callableStatement.setInt(11,facility.getFacilityTypeId());
+            callableStatement.setInt(10, Integer.parseInt(facility.getRentTypeId()));
+            callableStatement.setInt(11, Integer.parseInt(facility.getFacilityTypeId()));
             callableStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -79,17 +79,17 @@ public class FacilityRepository implements IFacilityRepository {
         try {
             CallableStatement callableStatement = connection.prepareCall(UPDATE_FACILITY);
             callableStatement.setString(1,facility.getName());
-            callableStatement.setInt(2,facility.getArea());
-            callableStatement.setDouble(3,facility.getCost());
-            callableStatement.setInt(4,facility.getMaxPeople());
+            callableStatement.setInt(2, Integer.parseInt(facility.getArea()));
+            callableStatement.setDouble(3, Double.parseDouble(facility.getCost()));
+            callableStatement.setInt(4, Integer.parseInt(facility.getMaxPeople()));
             callableStatement.setString(5,facility.getStandard());
             callableStatement.setString(6,facility.getOtherConvenience());
-            callableStatement.setDouble(7,facility.getPoolArea());
-            callableStatement.setInt(8,facility.getFloors());
+            callableStatement.setDouble(7, Double.parseDouble(facility.getPoolArea()));
+            callableStatement.setInt(8, Integer.parseInt(facility.getFloors()));
             callableStatement.setString(9,facility.getFacilityFree());
-            callableStatement.setInt(10,facility.getRentTypeId());
-            callableStatement.setInt(11,facility.getFacilityTypeId());
-            callableStatement.setInt(12,facility.getId());
+            callableStatement.setInt(10, Integer.parseInt(facility.getRentTypeId()));
+            callableStatement.setInt(11, Integer.parseInt(facility.getFacilityTypeId()));
+            callableStatement.setInt(12, Integer.parseInt(facility.getId()));
             callableStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -117,17 +117,17 @@ public class FacilityRepository implements IFacilityRepository {
             preparedStatement.setInt(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
-                int facilityCode = resultSet.getInt("ma_dich_vu");
+                String facilityCode = resultSet.getString("ma_dich_vu");
                 String name = resultSet.getString("ten_dich_vu");
-                int area = resultSet.getInt("dien_tich");
-                double cost = resultSet.getDouble("chi_phi_thue");
-                int maxPeople = resultSet.getInt("so_nguoi_toi_da");
-                int rentTypeId = resultSet.getInt("ma_kieu_thue");
-                int facilityTypeCode = resultSet.getInt("ma_loai_dich_vu");
+                String area = resultSet.getString("dien_tich");
+                String cost = resultSet.getString("chi_phi_thue");
+                String maxPeople = resultSet.getString("so_nguoi_toi_da");
+                String rentTypeId = resultSet.getString("ma_kieu_thue");
+                String facilityTypeCode = resultSet.getString("ma_loai_dich_vu");
                 String roomStandard = resultSet.getString("tieu_chuan_phong");
                 String otherConvenience = resultSet.getString("mo_ta_tien_nghi_khac");
-                double poolArea = resultSet.getDouble("dien_tich_ho_boi");
-                int floors = resultSet.getInt("so_tang");
+                String poolArea = resultSet.getString("dien_tich_ho_boi");
+                String floors = resultSet.getString("so_tang");
                 String facilityFree = resultSet.getString("dich_vu_mien_phi_di_kem");
                 facility = new Facility(facilityCode,name,area,cost,maxPeople,rentTypeId,facilityTypeCode,roomStandard,otherConvenience,poolArea,floors,facilityFree);
             }
@@ -181,22 +181,22 @@ public class FacilityRepository implements IFacilityRepository {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_NAME_AND_ID);
             preparedStatement.setString(1,"%"+id+"%");
             preparedStatement.setString(2,"%"+name+"%");
-           ResultSet resultSet = preparedStatement.executeQuery();
-           while (resultSet.next()){
-               int facilityCode = resultSet.getInt("ma_dich_vu");
-               String facilityName = resultSet.getString("ten_dich_vu");
-               int area = resultSet.getInt("dien_tich");
-               double cost = resultSet.getDouble("chi_phi_thue");
-               int maxPeople = resultSet.getInt("so_nguoi_toi_da");
-               int rentTypeId = resultSet.getInt("ma_kieu_thue");
-               int facilityTypeCode = resultSet.getInt("ma_loai_dich_vu");
-               String roomStandard = resultSet.getString("tieu_chuan_phong");
-               String otherConvenience = resultSet.getString("mo_ta_tien_nghi_khac");
-               double poolArea = resultSet.getDouble("dien_tich_ho_boi");
-               int floors = resultSet.getInt("so_tang");
-               String facilityFree = resultSet.getString("dich_vu_mien_phi_di_kem");
-               facilityList.add(new Facility(facilityCode,facilityName,area,cost,maxPeople,rentTypeId,facilityTypeCode,roomStandard,otherConvenience,poolArea,floors,facilityFree));
-           }
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String facilityCode = resultSet.getString("ma_dich_vu");
+                String facilityName = resultSet.getString("ten_dich_vu");
+                String area = resultSet.getString("dien_tich");
+                String cost = resultSet.getString("chi_phi_thue");
+                String maxPeople = resultSet.getString("so_nguoi_toi_da");
+                String rentTypeId = resultSet.getString("ma_kieu_thue");
+                String facilityTypeCode = resultSet.getString("ma_loai_dich_vu");
+                String roomStandard = resultSet.getString("tieu_chuan_phong");
+                String otherConvenience = resultSet.getString("mo_ta_tien_nghi_khac");
+                String poolArea = resultSet.getString("dien_tich_ho_boi");
+                String floors = resultSet.getString("so_tang");
+                String facilityFree = resultSet.getString("dich_vu_mien_phi_di_kem");
+                facilityList.add(new Facility(facilityCode,facilityName,area,cost,maxPeople,rentTypeId,facilityTypeCode,roomStandard,otherConvenience,poolArea,floors,facilityFree));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

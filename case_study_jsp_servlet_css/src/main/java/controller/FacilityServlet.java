@@ -128,18 +128,18 @@ public class FacilityServlet extends HttpServlet {
     }
 
     private void updateFacility(HttpServletRequest request, HttpServletResponse response) {
-        int facilityCode = Integer.parseInt(request.getParameter("facilityCode"));
+        String facilityCode = request.getParameter("facilityCode");
         String name = request.getParameter("name");
-        int area = Integer.parseInt(request.getParameter("area"));
-        double cost = Double.parseDouble(request.getParameter("cost"));
-        int maxPeople = Integer.parseInt(request.getParameter("people"));
-        int rentalTypeId = Integer.parseInt(request.getParameter("rentalType"));
-        int typeId = Integer.parseInt(request.getParameter("TypeCode"));
+        String area = request.getParameter("area");
+        String cost = request.getParameter("cost");
+        String maxPeople = request.getParameter("people");
+        String rentalTypeId = request.getParameter("rentalType");
+        String typeId = request.getParameter("TypeCode");
         String standard = request.getParameter("standard");
         String convenience = request.getParameter("convenience");
-        int floors = Integer.parseInt(request.getParameter("floors"));
+        String floors = request.getParameter("floors");
         String facilityFree = request.getParameter("free");
-        double poolArea = Double.parseDouble(request.getParameter("Pool"));
+        String poolArea = request.getParameter("Pool");
         Facility facility = new Facility(facilityCode,name,area,cost,maxPeople,rentalTypeId,typeId,standard,convenience,poolArea,floors,facilityFree);
 
         List<RentType> rentTypeList = facilityService.showRentType();
@@ -167,18 +167,17 @@ public class FacilityServlet extends HttpServlet {
 
     private void addNewFacility(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
-        int area = Integer.parseInt(request.getParameter("area"));
-        double cost = Double.parseDouble(request.getParameter("cost"));
-        int maxPeople = Integer.parseInt(request.getParameter("people"));
-        int rentalTypeId = Integer.parseInt(request.getParameter("rentalType"));
-        int typeId = Integer.parseInt(request.getParameter("id"));
+        String area = request.getParameter("area");
+        String cost = request.getParameter("cost");
+        String maxPeople = request.getParameter("people");
+        String rentalTypeId = request.getParameter("rentalType");
+        String typeId = request.getParameter("typeId");
         String standard = request.getParameter("standard");
         String convenience = request.getParameter("convenience");
-        int floors = Integer.parseInt(request.getParameter("floors"));
+        String floors = request.getParameter("floors");
         String facilityFree = request.getParameter("free");
-        double poolArea = Double.parseDouble(request.getParameter("Pool"));
+        String poolArea = request.getParameter("Pool");
         Facility facility = new Facility(name,area,cost,maxPeople,rentalTypeId,typeId,standard,convenience,poolArea,floors,facilityFree);
-        List<String> information = new ArrayList<>();
         List<RentType> rentTypeList = facilityService.showRentType();
         List<FacilityType> facilityTypeList = facilityService.showFacilityType();
         request.setAttribute("rentTypeList",rentTypeList);

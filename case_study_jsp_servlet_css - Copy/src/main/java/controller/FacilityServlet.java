@@ -171,14 +171,13 @@ public class FacilityServlet extends HttpServlet {
         String cost = request.getParameter("cost");
         String maxPeople = request.getParameter("people");
         String rentalTypeId = request.getParameter("rentalType");
-        String typeId = request.getParameter("TypeCode");
+        String typeId = request.getParameter("typeId");
         String standard = request.getParameter("standard");
         String convenience = request.getParameter("convenience");
         String floors = request.getParameter("floors");
         String facilityFree = request.getParameter("free");
         String poolArea = request.getParameter("Pool");
         Facility facility = new Facility(name,area,cost,maxPeople,rentalTypeId,typeId,standard,convenience,poolArea,floors,facilityFree);
-        List<String> information = new ArrayList<>();
         List<RentType> rentTypeList = facilityService.showRentType();
         List<FacilityType> facilityTypeList = facilityService.showFacilityType();
         request.setAttribute("rentTypeList",rentTypeList);

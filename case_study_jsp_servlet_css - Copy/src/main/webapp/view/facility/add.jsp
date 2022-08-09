@@ -27,20 +27,20 @@
                         <div class="col-lg-2 ps-5">
                             <div class="form-check" onclick="showInput(roomInput.value)">
                                 <input type="hidden" value="${facility.facilityTypeId}" id="onload">
-                                <input class="form-check-input" type="radio" value="3" name="id" id="roomInput"
+                                <input class="form-check-input" type="radio" value="3" name="typeId" id="roomInput"
                                        checked>
                                 <label class="form-check-label" for="roomInput">
                                     Room
                                 </label>
                             </div>
                             <div class="form-check" onclick="showInput(villaInput.value)">
-                                <input class="form-check-input" value="1" type="radio" name="id" id="villaInput">
+                                <input class="form-check-input" value="1" type="radio" name="typeId" id="villaInput">
                                 <label class="form-check-label" for="villaInput">
                                     Villa
                                 </label>
                             </div>
                             <div class="form-check" onclick="showInput(houseInput.value)">
-                                <input class="form-check-input" value="2" type="radio" name="id" id="houseInput">
+                                <input class="form-check-input" value="2" type="radio" name="typeId" id="houseInput">
                                 <label class="form-check-label" for="houseInput">
                                     House
                                 </label>
@@ -138,7 +138,7 @@
                 document.getElementById("convenience").style.display = "block";
                 document.getElementById("free").style.display = "none";
                 document.getElementById("poolArea").style.display = "none";
-                document.getElementById("poolAreaInput").value = "0";
+                document.getElementById("poolAreaInput").value = "";
                 document.getElementById("freeInput").value = "";
                 break;
             case "1":
@@ -156,9 +156,9 @@
                 document.getElementById("free").style.display = "block";
                 document.getElementById("poolArea").style.display = "none";
                 document.getElementById("standardInput").value = "";
-                document.getElementById("floorsInput").value = "0";
+                document.getElementById("floorsInput").value = "";
                 document.getElementById("convenienceInput").value = "";
-                document.getElementById("poolAreaInput").value = "0";
+                document.getElementById("poolAreaInput").value = "";
                 break;
         }
     }
