@@ -82,7 +82,7 @@ public class CustomerService implements ICustomerService {
         }
 
         if (!customer.getPhone().isEmpty()){
-            if (!customer.getPhone().matches("^((090)|(091)|(\\(84\\)+90)|(\\(84\\)+91))[0-9]{7}$")){
+            if (!customer.getPhone().matches("^((090)|(091)|(\\(84\\)\\+90)|(\\(84\\)\\+91))[0-9]{7}$")){
                 errMap.put("phoneErr","Please input right format!");
             }
         }else {
