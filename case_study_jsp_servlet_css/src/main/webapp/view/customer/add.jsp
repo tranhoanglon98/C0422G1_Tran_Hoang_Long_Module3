@@ -26,55 +26,92 @@
                     <div class="row">
                         <div class="col-lg-6 ps-5 pe-5">
                             <div class="row pb-4">
-                                <span>Name: </span><span class="text-danger">${nameErr}</span>
-                                <input type="text" name="name" class="form-control" placeholder="Customer name"
-                                       aria-label="Customer name" value="${customer.name}">
+                                <div class="col-lg-12"><span>Name: </span><span class="text-danger">${nameErr}</span>
+                                </div>
+                                <div class="col-lg-12"><input type="text" name="name" class="form-control"
+                                                              placeholder="Customer name"
+                                                              aria-label="Customer name" value="${customer.name}"></div>
                             </div>
                             <div class="row pb-4">
-                                <span>Birthday: </span><span class="text-danger">${birthdayErr}</span>
-                                <input type="date" name="birthday" class="form-control" placeholder="Birthday"
-                                       aria-label="Birthday" value="${customer.birthDay}">
+                                <div class="col-lg-12"><span>Birthday: </span><span
+                                        class="text-danger">${birthdayErr}</span></div>
+                                <div class="col-lg-12"><input type="date" name="birthday" class="form-control"
+                                                              placeholder="Birthday"
+                                                              aria-label="Birthday" value="${customer.birthDay}"></div>
                             </div>
                             <div class="row pb-4">
-                                <span>Gender: </span>
-                                <select name="gender" class="form-control">
-                                    <option value="true">Nam</option>
-                                    <option value="false">Nữ</option>
-                                </select>
+                                <div class="col-lg-12"><span>Gender: </span></div>
+                                <div class="col-lg-12">
+                                    <select name="gender" class="form-control">
+                                        <c:if test="${customer.gender == true}">
+                                            <option value="true">Male</option>
+                                            <option value="false">Female</option>
+                                        </c:if>
+                                        <c:if test="${customer.gender == false}">
+                                            <option value="false">Female</option>
+                                            <option value="true">Male</option>
+                                        </c:if>
+                                        <c:if test="${customer.gender == null}">
+                                            <option value="true">Male</option>
+                                            <option value="false">Female</option>
+                                        </c:if>
+                                    </select>
+                                </div>
                             </div>
                             <div class="row pb-4">
-                                <span>ID card: </span><span class="text-danger">${idErr}</span>
-                                <input type="number" name="idCard" class="form-control"
-                                       placeholder="ID card" aria-label="ID card" value="${customer.idCard}">
+                                <div class="col-lg-12"><span>ID card: </span><span class="text-danger">${idErr}</span>
+                                </div>
+                                <div class="col-lg-12">
+                                    <input type="number" name="idCard" class="form-control"
+                                           placeholder="ID card" aria-label="ID card" value="${customer.idCard}">
+                                </div>
                             </div>
                             <div class="row">
-                                <button type="submit" name="action" value="add" class="btn btn-dark text-warning">Add</button>
+                                <button type="submit" name="action" value="add" class="btn btn-dark text-warning">Add
+                                </button>
                             </div>
                         </div>
                         <div class="col-lg-6 ps-5 pe-5">
                             <div class="row pb-4">
-                                <span>Phone: </span><span class="text-danger">${phoneErr}</span>
-                                <input type="number" name="phone" class="form-control" placeholder="Phone"
-                                       aria-label="Phone" value="${customer.phone}">
+                                <div class="col-lg-12"><span>Phone: </span><span class="text-danger">${phoneErr}</span>
+                                </div>
+                                <div class="col-lg-12">
+                                    <input type="number" name="phone" class="form-control" placeholder="Phone"
+                                           aria-label="Phone" value="${customer.phone}">
+                                </div>
                             </div>
                             <div class="row pb-4">
-                                <span>Email: </span><span class="text-danger">${emailErr}</span>
-                                <input type="email" name="email" class="form-control"
-                                       placeholder="Email" value="${customer.email}" aria-label="Email">
+                                <div class="col-lg-12"><span>Email: </span><span class="text-danger">${emailErr}</span>
+                                </div>
+                                <div class="col-lg-12">
+                                    <input type="email" name="email" class="form-control"
+                                           placeholder="Email" value="${customer.email}" aria-label="Email">
+                                </div>
                             </div>
                             <div class="row pb-4">
-                                <span>Customer type</span>
-                                <select name="customerType" class="form-control">
-                                    <c:forEach var="customerType" items="${customerTypeList}">
-                                        <option value="${customerType.customerTypeCode}">${customerType.customerType}</option>
-                                    </c:forEach>
-                                </select>
+                                <div class="col-lg-12"><span>Customer type</span></div>
+                                <div class="col-lg-12">
+                                    <select name="customerType" class="form-control">
+                                        <c:forEach var="customerType" items="${customerTypeList}">
+                                            <c:if test="${customer.customerTypeCode == customerType.customerTypeCode}">
+                                                <option value="${customerType.customerTypeCode}">${customerType.customerType}</option>
+                                            </c:if>
+                                        </c:forEach>
+                                        <c:forEach var="customerType" items="${customerTypeList}">
+                                            <c:if test="${customer.customerTypeCode != customerType.customerTypeCode}">
+                                                <option value="${customerType.customerTypeCode}">${customerType.customerType}</option>
+                                            </c:if>
+                                        </c:forEach>
+                                    </select>
+                                </div>
                             </div>
                             <div class="row pb-4">
-                                <span>Address</span>
-                                <input type="text" name="address" class="form-control"
-                                       placeholder="Address"
-                                       aria-label="Address" value="${customer.address}">
+                                <div class="col-lg-12"><span>Address</span></div>
+                                <div class="col-lg-12">
+                                    <input type="text" name="address" class="form-control"
+                                           placeholder="Address"
+                                           aria-label="Address" value="${customer.address}">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -89,7 +126,7 @@
                  src="https://www.ibtmamericas.com/content/dam/sitebuilder/rxmx/ibtm-americas/2022/back-viajesbtc.jpg/_jcr_content/renditions/original.image_file.1279.640.file/back-viajesbtc.jpg"
                  alt="">
         </div>
-        <%@include file="/view/facility/nav.jsp"%>
+        <%@include file="/view/facility/nav.jsp" %>
     </div>
 </div>
 <script>

@@ -6,6 +6,8 @@ import repository.customer.ICustomerRepository;
 import repository.customer.impl.CustomerRepository;
 import service.customer.ICustomerService;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,7 +65,8 @@ public class CustomerService implements ICustomerService {
     public Map<String, String> validate(Customer customer){
         Map<String,String> errMap = new HashMap<>();
         if (!customer.getName().isEmpty()){
-            if (!customer.getName().matches("^([A-Z][a-z])+( [A-Z][a-z]+)*$")){
+            if (!customer.getName().matches("^[A-ZĐ][a-zỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâ]+" +
+                    "( [A-ZĐ][a-zỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâ]*)*$")){
                 errMap.put("nameErr","Please input right format!");
             }
         }else {
@@ -95,7 +98,9 @@ public class CustomerService implements ICustomerService {
         }
 
         if ((!customer.getBirthDay().isEmpty())){
-            if ((customer.getBirthDay()).matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}$")){
+            try {
+                LocalDate birthDay = LocalDate.parse(customer.getBirthDay(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            }catch (Exception e){
                 errMap.put("birthdayErr","Please input right format!");
             }
         }else {

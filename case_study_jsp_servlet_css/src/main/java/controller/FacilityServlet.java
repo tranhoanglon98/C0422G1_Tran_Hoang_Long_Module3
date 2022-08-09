@@ -10,6 +10,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -176,15 +177,13 @@ public class FacilityServlet extends HttpServlet {
         int floors = Integer.parseInt(request.getParameter("floors"));
         String facilityFree = request.getParameter("free");
         double poolArea = Double.parseDouble(request.getParameter("Pool"));
-
         Facility facility = new Facility(name,area,cost,maxPeople,rentalTypeId,typeId,standard,convenience,poolArea,floors,facilityFree);
-
+        List<String> information = new ArrayList<>();
         List<RentType> rentTypeList = facilityService.showRentType();
         List<FacilityType> facilityTypeList = facilityService.showFacilityType();
         request.setAttribute("rentTypeList",rentTypeList);
         request.setAttribute("facilityTypeList",facilityTypeList);
         request.setAttribute("facility",facility);
-
         Map<String,String> errMap = facilityService.addNewFacility(facility);
         for (Map.Entry<String,String> entry: errMap.entrySet()){
             request.setAttribute(entry.getKey(),entry.getValue());
