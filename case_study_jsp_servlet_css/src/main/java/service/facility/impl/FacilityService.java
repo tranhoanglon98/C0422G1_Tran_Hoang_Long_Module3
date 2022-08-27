@@ -110,7 +110,7 @@ public class FacilityService implements IFacilityService {
             if (!facility.getFloors().isEmpty()) {
                 try {
                     if (Integer.parseInt(facility.getFloors()) < 0 || !facility.getFloors().matches("^[0-9]*$")) {
-                        errMap.put("floorErr", "Number of floor must be an positive ");
+                        errMap.put("floorErr", "Number of floor must be an positive integer");
                     }
                 } catch (Exception e) {
                     errMap.put("floorErr", "Please input right format");
@@ -125,7 +125,7 @@ public class FacilityService implements IFacilityService {
         if (!facility.getMaxPeople().isEmpty()) {
             try {
                 if (Integer.parseInt(facility.getMaxPeople()) < 0 || !facility.getMaxPeople().matches("^[0-9]*$")) {
-                    errMap.put("maxPeopleErr", "Max people must be an positive ");
+                    errMap.put("maxPeopleErr", "Max people must be an positive integer");
                 }
             } catch (Exception e) {
                 errMap.put("maxPeopleErr", "Please input right format");

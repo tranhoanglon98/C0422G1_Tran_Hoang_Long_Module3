@@ -173,12 +173,17 @@
     </div>
 </form>
 <script>
+
+
+
     function getInfoToModal(id, name, phone, email) {
         document.getElementById("code").value = id;
         document.getElementById("name").value = name;
         document.getElementById("phone").value = phone;
         document.getElementById("email").value = email;
     }
+
+
 </script>
 <script src="../../jquery/jquery-3.6.0.min.js"></script>
 <script src="../../DataTables-1.12.1/js/jquery.dataTables.min.js"></script>

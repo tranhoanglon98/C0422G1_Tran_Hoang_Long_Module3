@@ -137,11 +137,13 @@ public class CustomerServlet extends HttpServlet {
         request.setAttribute("customer",customer);
         request.setAttribute("customerTypeList",customerTypeList);
         if (errMap.isEmpty()){
+            request.setAttribute("mess","thanh cong");
             showHomePage(request,response);
         }else {
             for (Map.Entry<String,String> entry: errMap.entrySet()){
                 request.setAttribute(entry.getKey(),entry.getValue());
             }
+            request.setAttribute("mess","thanh cong");
         }
         try {
             request.getRequestDispatcher("view/customer/update.jsp").forward(request,response);

@@ -50,65 +50,90 @@
                             <div class="row">
                                 <div class="col-lg-6 ps-5 pe-5">
                                     <div class="row pb-4">
-                                        <span>Name:</span><span class="text-danger">${nameErr}</span>
-                                        <input type="text" name="name" class="form-control" placeholder="Service name"
-                                               aria-label="Service name" value="${facility.name}">
+                                        <div class="col-lg-12"><span>Name:</span><span
+                                                class="text-danger">${nameErr}</span></div>
+                                        <div class="col-lg-12"><input type="text" name="name" class="form-control"
+                                                                      placeholder="Service name"
+                                                                      aria-label="Service name"
+                                                                      value="${facility.name}"></div>
                                     </div>
                                     <div class="row pb-4">
-                                        <span>Area:</span><span class="text-danger">${areaErr}</span>
-                                        <input type="number" name="area" class="form-control" placeholder="Area"
-                                               aria-label="Area" value="${facility.area}">
+                                        <div class="col-lg-12"><span>Area:</span><span
+                                                class="text-danger">${areaErr}</span></div>
+                                        <div class="col-lg-12"><input type="number" name="area" class="form-control"
+                                                                      placeholder="Area"
+                                                                      aria-label="Area" value="${facility.area}"></div>
                                     </div>
                                     <div class="row pb-4">
-                                        <span>Cost:</span><span class="text-danger">${costErr}</span>
-                                        <input type="number" name="cost" class="form-control" placeholder="Cost"
-                                               aria-label="Cost" value="${facility.cost}">
+                                        <div class="col-lg-12"><span>Cost:</span><span
+                                                class="text-danger">${costErr}</span></div>
+                                        <div class="col-lg-12"><input type="number" name="cost" class="form-control"
+                                                                      placeholder="Cost"
+                                                                      aria-label="Cost" value="${facility.cost}"></div>
                                     </div>
                                     <div class="row pb-4">
-                                        <span>Max people</span><span class="text-danger">${maxPeopleErr}</span>
-                                        <input type="number" name="people" class="form-control" placeholder="Max people"
-                                               aria-label="Max people" value="${facility.maxPeople}">
+                                        <div class="col-lg-12"><span>Max people</span><span
+                                                class="text-danger">${maxPeopleErr}</span></div>
+                                        <div class="col-lg-12"><input type="number" name="people" class="form-control"
+                                                                      placeholder="Max people"
+                                                                      aria-label="Max people"
+                                                                      value="${facility.maxPeople}"></div>
                                     </div>
                                     <div class="row pb-4">
-                                        <span>Rental type</span>
-                                        <select class="form-control" name="rentalType">
+                                        <div class="col-lg-12"><span>Rental type</span></div>
+                                        <div class="col-lg-12"><select class="form-control" name="rentalType">
                                             <c:forEach items="${rentTypeList}" var="rentType">
                                                 <option value="${rentType.rentId}">${rentType.rentTypeName}</option>
                                             </c:forEach>
-                                        </select>
+                                        </select></div>
+
                                     </div>
                                     <div class="row">
-                                        <button type="submit" name="action" value="add" class="btn btn-primary">Add</button>
+                                        <div class="col-lg-12">
+                                            <button type="submit" name="action" value="add" class="btn btn-primary">
+                                                Add
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 ps-5 pe-5">
-                                    <div  class="row pb-4" style="display: none" id="standard">
-                                        <span>Room standard</span>
-                                        <input id="standardInput" type="text" name="standard" class="form-control"
-                                               placeholder="Room standard"
-                                               aria-label="Room standard">
+                                    <div class="row pb-4" style="display: none" id="standard">
+                                        <div class="col-lg-12"><span>Room standard</span></div>
+                                        <div class="col-lg-12"><input id="standardInput" type="text" name="standard"
+                                                                      class="form-control"
+                                                                      placeholder="Room standard"
+                                                                      aria-label="Room standard"></div>
                                     </div>
                                     <div class="row pb-4" style="display: none" id="convenience">
-                                        <span>Other convenience</span>
-                                        <input id="convenienceInput" type="text" name="convenience" class="form-control"
-                                               placeholder="Other convenience"
-                                               aria-label="Other convenience">
+                                        <div class="col-lg-12"><span>Other convenience</span></div>
+                                        <div class="col-lg-12"><input id="convenienceInput" type="text"
+                                                                      name="convenience" class="form-control"
+                                                                      placeholder="Other convenience"
+                                                                      aria-label="Other convenience"></div>
                                     </div>
                                     <div class="row pb-4" style="display: none" id="floors">
-                                        <span>Number of floors</span><span class="text-danger">${floorErr}</span>
-                                        <input id="floorsInput" type="number" name="floors" class="form-control"
-                                               placeholder="Number of floors" aria-label="Number of floor" value="${facility.floors}">
+                                        <div class="col-lg-12"><span>Number of floors</span><span
+                                                class="text-danger">${floorErr}</span></div>
+                                        <div class="col-lg-12"><input id="floorsInput" type="number" name="floors"
+                                                                      class="form-control"
+                                                                      placeholder="Number of floors"
+                                                                      aria-label="Number of floor"
+                                                                      value="${facility.floors}"></div>
                                     </div>
                                     <div class="row pb-4" style="display: block" id="free">
-                                        <span>Facility free</span>
-                                        <input id="freeInput" type="text" name="free" class="form-control"
-                                               placeholder="Facility free"
-                                               aria-label="Facility free">
+                                        <div class="col-lg-12"><span>Facility free</span></div>
+                                        <div class="col-lg-12"><input id="freeInput" type="text" name="free"
+                                                                      class="form-control"
+                                                                      placeholder="Facility free"
+                                                                      aria-label="Facility free"></div>
                                     </div>
                                     <div class="row pb-4" style="display: none" id="poolArea">
-                                        <span>Pool area:</span><span class="text-danger">${poolErr}</span>
-                                        <input id="poolAreaInput" type="number" name="Pool" class="form-control"
-                                               placeholder="Pool area" aria-label="Pool area" value="${facility.poolArea}">
+                                        <div class="col-lg-12"><span>Pool area:</span><span
+                                                class="text-danger">${poolErr}</span></div>
+                                        <div class="col-lg-12"><input id="poolAreaInput" type="number" name="Pool"
+                                                                      class="form-control"
+                                                                      placeholder="Pool area" aria-label="Pool area"
+                                                                      value="${facility.poolArea}"></div>
                                     </div>
                                 </div>
                             </div>
@@ -123,11 +148,13 @@
                  alt="">
         </div>
         <%@include file="/view/facility/nav.jsp" %>
+        /
     </div>
 </div>
 <script>
     let code = document.getElementById("onload").value;
     window.onload = showInput(code);
+
     function showInput(value) {
         console.log(value)
         switch (value) {

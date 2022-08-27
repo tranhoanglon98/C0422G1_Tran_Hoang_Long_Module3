@@ -19,7 +19,6 @@
     <script src="https://kit.fontawesome.com/121b5e5230.js" crossorigin="anonymous"></script>
     <style>
 
-
     </style>
 </head>
 <body style="font-family: Courgette,serif;background: #E0FFFF">
@@ -41,13 +40,17 @@
                                 <div class="row">
                                     <div class="col-lg-3"></div>
                                     <div class="col-lg-3">
-                                        <input type="text" placeholder="facility code" name="facilityCode" class="form-control">
+                                        <input type="text" placeholder="facility code" name="facilityCode"
+                                               class="form-control">
                                     </div>
                                     <div class="col-lg-3">
-                                        <input type="text" placeholder="facility Name" name="facilityName" class="form-control">
+                                        <input type="text" placeholder="facility Name" name="facilityName"
+                                               class="form-control">
                                     </div>
                                     <div class="col-lg-3">
-                                        <button type="submit" name="action" value="find" class="btn btn-primary">search</button>
+                                        <button type="submit" name="action" value="find" class="btn btn-primary">
+                                            search
+                                        </button>
                                     </div>
                                 </div>
                             </form>
@@ -66,49 +69,50 @@
                                 <th>Other convenience</th>
                                 <th>Pool area</th>
                                 <th>Floors</th>
-                                <th>Facility free</th>
+                                <th></th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             <c:forEach items="${facilityList}" var="facility">
-                            <tr>
-                                <td>${facility.id}</td>
-                                <td>${facility.name}</td>
-                                <td>${facility.area}</td>
-                                <td>${facility.cost}</td>
-                                <td>${facility.maxPeople}</td>
+                                <tr>
+                                    <td>${facility.id}</td>
+                                    <td>${facility.name}</td>
+                                    <td>${facility.area}</td>
+                                    <td>${facility.cost}</td>
+                                    <td>${facility.maxPeople}</td>
 
-                                <c:forEach var="rentType" items="${rentTypeList}">
-                                    <c:if test="${rentType.rentId == facility.rentTypeId}">
-                                        <td>${rentType.rentTypeName}</td>
-                                    </c:if>
-                                </c:forEach>
+                                    <c:forEach var="rentType" items="${rentTypeList}">
+                                        <c:if test="${rentType.rentId == facility.rentTypeId}">
+                                            <td>${rentType.rentTypeName}</td>
+                                        </c:if>
+                                    </c:forEach>
 
-                                <c:forEach var="facilityType" items="${facilityTypeList}">
-                                    <c:if test="${facility.facilityTypeId == facilityType.id}">
-                                        <td>${facilityType.name}</td>
-                                    </c:if>
-                                </c:forEach>
+                                    <c:forEach var="facilityType" items="${facilityTypeList}">
+                                        <c:if test="${facility.facilityTypeId == facilityType.id}">
+                                            <td>${facilityType.name}</td>
+                                        </c:if>
+                                    </c:forEach>
 
-                                <td>${facility.standard}</td>
-                                <td>${facility.otherConvenience}</td>
-                                <td>${facility.poolArea}</td>
-                                <td>${facility.floors}</td>
-                                <td>${facility.facilityFree}</td>
-                                <td>
-                                    <a href="/facility?action=edit&facilityCode=${facility.id}">
-                                        <button style="padding: 5px" class="btn btn-primary">
-                                            <span class="material-symbols-outlined">edit</span>
+                                    <td>${facility.standard}</td>
+                                    <td>${facility.otherConvenience}</td>
+                                    <td>${facility.poolArea}</td>
+                                    <td>${facility.floors}</td>
+                                    <td>
+                                        <a href="/facility?action=edit&facilityCode=${facility.id}">
+                                            <button style="padding: 5px" class="btn btn-primary">
+                                                <span class="material-symbols-outlined">edit</span>
+                                            </button>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <button style="padding: 5px" type="button" class="btn btn-primary"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                onclick="getInfoToModal('${facility.id}','${facility.name}')">
+                                            <span class="material-symbols-outlined">delete</span>
                                         </button>
-                                    </a>
-                                    <button style="padding: 5px" type="button" class="btn btn-primary"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                            onclick="getInfoToModal('${facility.id}','${facility.name}')">
-                                        <span class="material-symbols-outlined">delete</span>
-                                    </button>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             </c:forEach>
                             </tbody>
                         </table>
@@ -165,7 +169,7 @@
         $('#list').dataTable({
             "dom": 'lrtip',
             "lengthChange": false,
-            "pageLength": 3
+            "pageLength": 5
         });
     });
 </script>
